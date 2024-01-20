@@ -66,12 +66,12 @@ class Builder:
         valid = self._files is not None
         if not valid:
             print("No files config available")
-        valid = self._files.INPUT is not None  # type: ignore[union-attr]
+        valid = valid and self._files.INPUT is not None  # type: ignore[union-attr]
         if not valid:
             print(f"No input file configured in {self._files}")
-        valid = exists(self._files.INPUT)  # type: ignore[union-attr]
+        valid = valid and exists(self._files.INPUT)  # type: ignore[union-attr]
         if not valid:
-            print(f"No input file at {self._files.INPUT}")  # type: ignore[union-attr]
+            print(f"No input file configured in {self._files}")  # type: ignore[union-attr]
         return valid
 
     def _new_document(self) -> None:
@@ -80,11 +80,11 @@ class Builder:
 
     def _clean_output(self) -> None:
         """Cleans the output file location"""
-        print(f"Cleaning {self._files.OUTPUT}")  # type: ignore[union-attr]
         try:
+            print(f"Cleaning {self._files.OUTPUT}")  # type: ignore[union-attr]
             remove(self._files.OUTPUT)  # type: ignore[union-attr]
         except FileNotFoundError:
-            print(f"Nothing to clean at {self._files.OUTPUT}")  # type: ignore[union-attr]
+            print(f"Nothing to clean configured in {self._files}")  # type: ignore[union-attr]
 
     def _reset(self) -> None:
         """removes the config and doc in case this instance gets used again"""
