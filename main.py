@@ -2,8 +2,8 @@ from catbook import Builder
 
 
 def main():
-    print("main")
-    Builder()
+    builder = Builder()
+    builder.build()
 
 
 if __name__ == "__main__":
