@@ -12,7 +12,7 @@ class Markup:
     BLOCK: str = "|"
     QUOTED_LINE: str = '"'
     WORD_HIGHLIGHT: str = "|"
-    MARKUP_CONFIG: str = "markup.ini"
+    CONFIG: str = "markup.ini"
 
     def __post_init__(self):
         self._config = RawConfigParser()
@@ -22,8 +22,8 @@ class Markup:
         self._load_config()
 
     def _load_config(self):
-        if path.isfile(self.MARKUP_CONFIG):
-            self._config.read(self.MARKUP_CONFIG)
+        if path.isfile(self.CONFIG):
+            self._config.read(self.CONFIG)
             section = "markup"
             try:
                 self.JUMP = self._config[section]["jump"]
@@ -54,4 +54,4 @@ class Markup:
             except KeyError:
                 pass
         else:
-            print(f"No {self.MARKUP_CONFIG} file found. Using default markup markers")
+            print(f"No markup {self.CONFIG} file found. Using default markup markers.")
