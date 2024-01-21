@@ -16,7 +16,7 @@ def test_output():
         pass
 
     builder = Builder()
-    # create the config objects so we don't have to do it here
+    # create default config objects so we don't have to do it here
     builder.init()
     print("test_output: resetting output and input!")
     builder.files.OUTPUT = output

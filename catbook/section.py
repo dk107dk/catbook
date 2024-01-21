@@ -20,6 +20,7 @@ class Section:
         self._quote: Optional[List] = None
         self._lines_count: int = 0
         self._part_break: bool = False
+        self._last_was_break = False
 
     # ============= PUBLIC STUFF HERE
 
@@ -248,5 +249,5 @@ class Section:
                 run.font.name = self._fonts.BODY
             self._last_was_break = False
         except Exception as e:
-            print(f"_append_line: error: {e}")
+            print(f"Section failed at _append_line: error: {e}")
             traceback.print_exc()

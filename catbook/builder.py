@@ -57,7 +57,6 @@ class Builder:
         self._clean_output()
 
         # build happens here
-
         self.book = Book(
             files=self._files, markup=self._markup, fonts=self._fonts, document=self.doc
         )
@@ -69,22 +68,28 @@ class Builder:
     # ========== INTERNAL STUFF STARTS HERE
 
     def _validate(self) -> bool:
-        valid = self._files is not None
-        if not valid:
+        print("Validating configuration")
+        if self._files is None:
             print("No files config available")
-        valid = valid and self._files.INPUT is not None  # type: ignore[union-attr]
-        if not valid:
-            print(f"No input file configured in {self._files}")
-        valid = valid and exists(self._files.INPUT)  # type: ignore[union-attr]
-        if not valid:
+            return False
+
+        if self._files.INPUT is None:  # type: ignore[union-attr]
+            print(f"No input file configured in {self._files.INPUT}")
+            return False
+
+        if not exists(self._files.INPUT):  # type: ignore[union-attr]
             print(f"No input file configured in {self._files}")  # type: ignore[union-attr]
-        valid = valid and self._files.FILES is not None  # type: ignore[union-attr]
-        if not valid:
+            return False
+
+        if self._files.FILES is None:  # type: ignore[union-attr]
             print(f"No files directory configured in {self._files}")
-        valid = valid and exists(self._files.FILES)  # type: ignore[union-attr]
-        if not valid:
+            return False
+
+        if not exists(self._files.FILES):  # type: ignore[union-attr]
             print(f"Files directory does not exist at {self._files.FILES}")  # type: ignore[union-attr]
-        return valid
+            return False
+
+        return True
 
     def _new_document(self) -> None:
         document = Document()
