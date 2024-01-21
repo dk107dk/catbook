@@ -43,7 +43,7 @@ class Section:
 
     # ============= INTERNAL STUFF STARTS HERE
 
-    def _append_quote(self, line: str) -> None:
+    def _append_quote(self) -> None:
         """adds the quote into the document"""
         if not self._quote:
             raise Exception("No quote array found at _append_quote")
@@ -59,7 +59,7 @@ class Section:
                 paragraph_format.space_after = Pt(1)
         self._quote = None
 
-    def _append_block(self, line: str) -> None:
+    def _append_block(self) -> None:
         """adds the block text to the document"""
         if not self._block:
             raise Exception("No block array found at _append_block")
@@ -81,10 +81,10 @@ class Section:
         """writes blocks, quotes, and page breaks to the document"""
         if self._block is not None:
             # write the block
-            self._append_block(line)
+            self._append_block()
         if self._quote is not None:
             # write the quote
-            self._append_quote(line)
+            self._append_quote()
         if self._part_break and self._last_line(lines, line_number):
             p = self.doc.add_paragraph()
             run = p.add_run("")
@@ -163,7 +163,7 @@ class Section:
             return None
         elif self._block is not None:
             # write the block
-            self._append_block(line)
+            self._append_block()
             return False
         else:
             return False
@@ -178,7 +178,7 @@ class Section:
             return True
         elif self._quote is not None:
             # write the quote
-            self._append_quote(line)
+            self._append_quote()
             return False
         else:
             return False
