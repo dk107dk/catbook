@@ -1,6 +1,7 @@
 from . import Markup
 from . import Fonts
 from . import Files
+from . import Book
 from docx import Document
 from os import remove
 from os.path import exists
@@ -56,6 +57,9 @@ class Builder:
         self._clean_output()
 
         # build happens here
+
+        self.book = Book(files=self.files, document=self.doc)
+        self.book.create()
 
         self._save()
         self._reset()
