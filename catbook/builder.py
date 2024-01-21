@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Optional
 
 
-class NoInputException(Exception):
+class BadConfigException(Exception):
     pass
 
 
@@ -51,14 +51,16 @@ class Builder:
             print("Initialization required")
             self.init()
         if not self._validate():
-            raise NoInputException(
-                f"Cannot start build without an input file: {self.files}"
+            raise BadConfigException(
+                f"Cannot start build with files config: {self.files}"
             )
         self._clean_output()
 
         # build happens here
 
-        self.book = Book(files=self.files, document=self.doc)
+        self.book = Book(
+            files=self._files, markup=self._markup, fonts=self._fonts, document=self.doc
+        )
         self.book.create()
 
         self._save()
@@ -76,6 +78,12 @@ class Builder:
         valid = valid and exists(self._files.INPUT)  # type: ignore[union-attr]
         if not valid:
             print(f"No input file configured in {self._files}")  # type: ignore[union-attr]
+        valid = valid and self._files.FILES is not None  # type: ignore[union-attr]
+        if not valid:
+            print(f"No files directory configured in {self._files}")
+        valid = valid and exists(self._files.FILES)  # type: ignore[union-attr]
+        if not valid:
+            print(f"Files directory does not exist at {self._files.FILES}")  # type: ignore[union-attr]
         return valid
 
     def _new_document(self) -> None:

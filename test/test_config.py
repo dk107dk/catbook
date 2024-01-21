@@ -16,6 +16,21 @@ def test_load_markup_config():
     assert markup.JUMP == "jump"
 
 
+def test_is_block_or_quote():
+    markup = Markup()
+    markup.BLOCK = "|"
+    markup.QUOTE = '"'
+
+    assert not markup._is_quote("", 5, 10)
+    assert not markup._is_quote("this is a line", 5, 10)
+    assert markup._is_quote('"this is a line', 5, 10)
+
+    assert not markup._is_block("", 5, 10)
+    assert not markup._is_block("this is a line", 5, 10)
+    assert markup._is_block("|this is a line", 5, 10)
+    assert markup._is_block("||this is a line", 5, 10) is None
+
+
 # ======== FONTS
 def test_load_no_fonts_config():
     fonts = Fonts()

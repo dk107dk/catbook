@@ -1,6 +1,7 @@
 from configparser import RawConfigParser
 from dataclasses import dataclass
 from os import path
+from typing import Optional
 
 
 @dataclass
@@ -55,3 +56,25 @@ class Markup:
                 pass
         else:
             print(f"No markup {self.CONFIG} file found. Using default markup markers.")
+
+    def _is_quote(self, line: str, line_number: int, lines: int) -> bool:
+        ll = len(line)
+        if ll == 0:
+            return False
+        if line[0] != self.QUOTED_LINE:
+            return False
+        if line_number >= lines:  # why would this happen?
+            return False
+        return True
+
+    def _is_block(self, line: str, line_number: int, lines: int) -> Optional[bool]:
+        ll = len(line)
+        if ll == 0:
+            return False
+        if line[0] == self.BLOCK and ll > 1 and line[1] == self.BLOCK:
+            return None
+        if line[0] != self.BLOCK:
+            return False
+        if line_number >= lines:  # why would this happen?
+            return False
+        return True
