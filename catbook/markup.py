@@ -8,9 +8,9 @@ from typing import Optional
 class Markup:
     """first line, first chars. a jump creates a break
     within a chapter by adding an untitled section
-    separated from the preceeding section by an
-    indictor. often people use three widely spaced
-    stars or dots as the indictor."""
+    separated from the preceding section by an
+    indicator. often people use three widely spaced
+    stars or dots as the indicator."""
 
     JUMP: str = "***"
 
@@ -26,15 +26,18 @@ class Markup:
         on a new page """
     NEW_SECTION: str = ">"
 
-    """ text that is set off from the rest of the
-        quoted and unquoted paragraphs. could be used for
-        inserting the text of a document into a narrative. """
+    """ any line, first char. text that is set off from
+        the rest of the quoted and unquoted paragraphs.
+        could be used for inserting the text of a document
+        into a narrative. """
     BLOCK: str = "|"
 
-    """ a paragraph of quoted text """
+    """ any line, first char. a paragraph of quoted text """
     QUOTED_LINE: str = '"'
 
-    """ highlights words in a paragraph for e.g. in italics """
+    """ around any word or words. highlights the words
+        between two of the marks in a paragraph. for e.g., in
+        italics """
     WORD_HIGHLIGHT: str = "|"
 
     CONFIG: str = "markup.ini"
