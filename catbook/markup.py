@@ -32,12 +32,18 @@ class Markup:
         into a narrative. """
     BLOCK: str = "|"
 
-    """ any line, first char. a paragraph of quoted text """
+    """ any line, first char. a paragraph of quoted text. this
+        markup is also useful for forcing a blank line. to do
+        that, make it the first character of an otherwise
+        blank line.  """
     QUOTED_LINE: str = '"'
 
     """ around any word or words. highlights the words
         between two of the marks in a paragraph. for e.g., in
-        italics """
+        italics. Assuming | is used for both highlights and
+        blocks, if a highlight begins with the first word of
+        a paragraph it will look like a block. in that case
+        use a double highlight mark, as in: ||some words|. """
     WORD_HIGHLIGHT: str = "|"
 
     CONFIG: str = "markup.ini"
