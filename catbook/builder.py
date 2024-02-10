@@ -14,7 +14,7 @@ class BadConfigException(Exception):
 
 
 class Builder:
-    def __init__(self):
+    def __init__(self) -> None:
         self._markup: Optional[Markup] = None
         self._fonts: Optional[Fonts] = None
         self._files: Optional[Files] = None
@@ -27,7 +27,16 @@ class Builder:
         self._fonts = Fonts()
         self._files = Files()
         self._new_document()
+        self._book: Optional[Book] = None
         print("Done initalizing")
+
+    @property
+    def book(self) -> Optional[Book]:
+        return self._book
+
+    @book.setter
+    def book(self, b: Book) -> None:
+        self._book = b
 
     @property
     def doc(self) -> Optional[Document]:

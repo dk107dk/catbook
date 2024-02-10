@@ -1,16 +1,25 @@
 from . import Markup
 from . import Fonts
+from . import SectionMetadata
 from docx import Document
+from docx.text.paragraph import Paragraph
+from docx.text.run import Run
 from docx.shared import Pt
 from docx.shared import RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK
 import traceback
 from typing import List, Optional
+from . import Tokenizer
 
 
 class Section:
     def __init__(
-        self, lines: List[str], markup: Markup, fonts: Fonts, document: Document
+        self,
+        lines: List[str],
+        markup: Markup,
+        fonts: Fonts,
+        document: Document,
+        metadata: SectionMetadata,
     ) -> None:
         self._lines: List[str] = lines
         self._fonts: Fonts = fonts
@@ -21,6 +30,7 @@ class Section:
         self._lines_count: int = 0
         self._part_break: bool = False
         self._last_was_break = False
+        self._metadata = metadata
 
     # ============= PUBLIC STUFF HERE
 
@@ -35,6 +45,7 @@ class Section:
             except Exception as e:
                 print(f"Error in section at {line_number}: {line}: {e}")
                 return False
+        self._metadata.FILE_LINE_COUNT = line_number
         return True
 
     @property
@@ -51,7 +62,7 @@ class Section:
         for aline in self._quote:
             p = self.doc.add_paragraph()
             paragraph_format = p.paragraph_format
-            run = p.add_run(f"   {aline[1:]}")
+            run = self._add_run(p, f"   {aline[1:]}")
             run.font.name = self._fonts.QUOTE
             run.italic = True
             i = i - 1
@@ -68,7 +79,7 @@ class Section:
             p = self.doc.add_paragraph()
             paragraph_format = p.paragraph_format
             thisline = aline[1:]
-            run = p.add_run(f"{thisline}")
+            run = self._add_run(p, f"{thisline}")
             run.italic = True
             run.font.name = self._fonts.BLOCK
             run.font.size = Pt(10)
@@ -87,7 +98,7 @@ class Section:
             self._append_quote()
         if self._part_break and self._last_line(lines, line_number):
             p = self.doc.add_paragraph()
-            run = p.add_run("")
+            run = self._add_run(p, "")
             run.font.name = self._fonts.BODY
             run.add_break(WD_BREAK.PAGE)
             self._part_break = False
@@ -118,7 +129,7 @@ class Section:
         if (self._part_break and not self._last_was_break) or close_part:
             line = line[2 if self._book_break else 1 :]
             p = self.doc.add_paragraph()
-            run = p.add_run("")
+            run = self._add_run(p, "")
             run.font.name = self._fonts.TITLE
             run.add_break(WD_BREAK.PAGE)
         elif self._part_break:
@@ -132,7 +143,7 @@ class Section:
             paragraph_format = p.paragraph_format
             paragraph_format.space_before = Pt(24)
             paragraph_format.space_after = Pt(25)
-            run = p.add_run("*                   *                   *")
+            run = self._add_jump(p)
         else:
             #
             # we're not a simple separator, therefore we must be a heading of some kind
@@ -147,7 +158,7 @@ class Section:
         if self._part_break or simple_separator:
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER
         if not simple_separator:
-            run = p.add_run(line)
+            run = self._add_run(p, line)
             run.font.name = self._fonts.BODY
             run.font.color.rgb = RGBColor.from_string("000000")
 
@@ -194,17 +205,42 @@ class Section:
             mid = line[start + 1 : end]
             back = line[end + 1 :]
             line = back
-            run = p.add_run("   " if block == 0 else "")
+            run = self._add_run(p, "   " if block == 0 else "")
             run.font.name = self._fonts.BODY
-            run = p.add_run(front)
+            run = self._add_run(p, front)
             run.font.name = self._fonts.BODY
-            run = p.add_run(mid)
+            run = self._add_run(p, mid)
             run.italic = True
             run.font.name = self._fonts.BODY
             if self._markup.WORD_HIGHLIGHT not in line:
-                run = p.add_run(back)
+                run = self._add_run(p, back)
                 run.font.name = self._fonts.BODY
             block = block + 1
+
+    def _add_run(self, p: Paragraph, text: str) -> Run:
+        # print(f"add_run: {text} -- {self._metadata}")
+        if self._metadata is not None:
+            ws = self._get_words(text)
+            # print(f"ws: {ws}")
+            self._metadata.WORDS = ws + self._metadata.WORDS
+            n = len(ws)
+            self._metadata.WORD_COUNT = self._metadata.WORD_COUNT + n
+        run = p.add_run(text)
+        return run
+
+    def _get_words(self, text: str) -> List[str]:
+        words = Tokenizer.get_words(text)
+        return words
+
+    def _count_words(self, text: str) -> int:
+        return len(self._get_words(text))
+
+    def _add_jump(self, p: Paragraph) -> Run:
+        #
+        # TODO: get this text from config
+        #
+        run = p.add_run("*                   *                   *")
+        return run
 
     def _append_line(self, lines: List[str], line: str, line_number: int):
         try:
@@ -220,6 +256,7 @@ class Section:
             # titles
             #
             if line_number == 0:
+                self._metadata.set_first_line(self._markup, line)
                 return self._append_title(line)
             #
             # blocks
@@ -245,7 +282,7 @@ class Section:
                 self._handle_highlights(line)
             else:
                 p = self.doc.add_paragraph()
-                run = p.add_run(f"   {line}")
+                run = self._add_run(p, f"   {line}")
                 run.font.name = self._fonts.BODY
             self._last_was_break = False
         except Exception as e:

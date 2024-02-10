@@ -1,0 +1,82 @@
+
+"
+See See wasn't a big fan of the four-hundred-foot long tunnel that connected the Control Building below the Green to Center Field, the telescope's ring-shaped integration chamber between the towers. It contained power, mechanical linkages, plumbing, and a jumble of other wire bundles and tubes running through ceiling- and wall-mounted racks. The tunnel's dusty fluorescent tubes were often dead, or they flickered randomly in the uncanny valley between a dying light and a horror movie. It hummed. It was musty. Cardboard boxes and old metal shelves lined one side. There was an almost imperceptible echo.
+
+It was after seven. Her dad wasn't in Center Field. It took a few moments to be sure. The circular room was crowded with crates and materials. At the center, the main pivot supporting a significant fraction of the telescope’s weight was surrounded by tarps and half repainted. There didn't seem to be anyone around. Mostly likely everyone was still at the party that was tailing off back at Control or else headed home. See See circled to the gangway up to the Green.
+
+Outside back by the buildings, it was dusky. However, in the center of the roundabout, directly below the telescope, the circle of spotlights painted the sky jet black, shrank the horizon, and chopped away at depth perception. Glare reflected off the huge nest of white girders. She felt like she was in a snow globe of science, just before it is shaken.
+
+See See walked over the saturated primary-green turf to an ice tower carved in the shape of a metronome holding up half the dome that was her sky. The tower had many informal names. See See preferred Purcell, opposite Muller, discoverers of the hydrogen line. Purcell was stationary at the moment. She jumped up on the steel stairs at the base. It was fifteen flights to the lab and machinery space at the top. What amounted to a three-story building on six-story stilts strapped to roller skates.
+
+She worked her way up to the top room. It was exhausting. Phaeton was not there. She stopped to look at the rack and pinion. A steel gearing more than twenty feet around rotated the dish. It worked in concert with its pair in Muller. Purcell led, Muller slightly trailed, providing tension that smoothed the two-thousand-ton instrument's elevation angle. Or was it the other way around? See See couldn't remember which one led. Anyway, the rack’s axle carried the load onto a trunnion built into the tower.
+
+The vertical rotation around the axle was effected through a massive ball-bearing ring attached to the rack and pinion. See See knew the racks were salvaged from decommissioned battleships' main fifteen-inch guns. Unlike most people, that fact didn't awe her. Had she visited a floating museum and had the main guns pointed out to her as rotating on a rack borrowed from a massive radio telescope floating in the sky, she would have indeed been significantly impressed. See See was definitely not most people.
+
+Mounted at the center of the axle within a transparent housing was a glass disk. It was about seven inches in diameter, less than an inch thick. Bolted through an adhesive brass washer to a steel plate. Delicate tracery radiated out from the center. At the edge, almost microscopically fine calibration lines. The lines were groves cut precisely into the glass by fractions of an arcsecond. They were inked in bright metal. This was the elevation disk.
+
+The disk was fabricated in the Observatory Instrument Shop by Cori. No one else could do it. At once an advanced technology and yet increasingly archaic. She had cut the annulus from a sheet of specially formulated chemically-strengthened low iron glass, precisely polished. The glass was hard. The gradation lines were the bigger challenge, almost impossible.
+
+Cori worked the glass on a table-sized brass and steel high-precision dividing engine of her own construction. The result, mounted on the immense telescope's axle, was observed by an automated microscope under a tiny high-intensity lamp. Attached to the microscope, a photoelectrical scanner. The scanner acted as a checksum to the control system of the larger instrument. It was vital, unshakably accurate, and completely missable in its dramatic environs.
+
+The future was coming, the old ones retiring. Cori was one of a very few people on either side of the Atlantic who could handle the advanced glass-metal interface and still do the exacting metrology using existing technology. And she understood the optics and control links. A lonely craftsperson among the astronomical calculators. Her basement workshop was an enigma to the increasingly digital interns flowing into the observatory.
+
+The telescope's electric elevation engines rotated the pinion to roll the rack-attached dish on its axle according to feedback magslips that coupled through various gearboxes eventually all the way to the Control Room dials. As it moved, the arcsecond lines provided a feedback indicator linking the servos and readouts. The whole assembly was an astonishingly sensitive nervous system for a monstrously huge eyeball that would one day resolve black holes and other galactic imponderables. The plan was to rip it all out that summer.
+
+That was the problem with technology. See See loved seeing the telescope re-burnished to peer even deeper into the blackness. At the same time, the more things went digital, the more her mom's mechanisms became mere inscrutably microscopic electronics housed in black boxes. Many built in Massachusetts, Germany, or Japan. Cori didn't have such doubts. She was too busy rising to the challenge.
+
+Having recovered her breath, See See dropped a level and stepped onto the catwalk heading out to the base of the dish. There was a small box hanging there. Some called it a lab. Most, the Phonebooth. It rotated on its own arm so that it stayed vertical and still. See See didn't mind the height of the see-through catwalk grating. She was meta enough to wonder why not, and if she should learn to be afraid.
+
+"Ah ha! I found you. Mom sends you this.
+
+Phaeton looked up. His eldest by fifteen minutes was thrusting a fat wedge of cake like it was a lifesaving field dressing.
+
+"Thanks kid. Bring any forks?
+
+He held up grimy hands. Phaeton had been attempting to fix an electronic gizmo that See See assumed was critical to Science. The box he was working in apparently had some kind of lubricant, as well as electrical wires and switches. An interesting pairing, she thought.
+
+"Fingers were discovered in the late eighteen hundreds. They are very effective!
+
+Phaeton was hungry. He didn't disagree.
+
+They talked briefly about the refurbishment. They touched glancingly on the merits of summer school versus See See just wandering unfettered through the World's premiere radio astronomical instrument campus doing pretty much whatever she liked and could get away with. Then they talked about something Cori had said they should.
+
+"So, I met a boy earlier while I was avoiding the party. Mom said I should ask you about him. She was kind of mysterious about it.
+
+Phaeton, ever the scientist, wanted to know the classification of boy.
+
+"What type of boy are we talking about here?
+
+See See didn't think they used the same classification system. Likely hers was more modern and based around the latest theories.
+
+"He was about two meters. Paleish. Bipedal. A familiar species. Nothing special. Just kind of odd. He said he had been in to see the Director. Apparently, that hadn't gone the way he wanted it to.
+
+Her dad was calibrating.
+
+"Did he go by a name?
+
+See See realized she had left that crucial datum out of the description.
+
+"Paul Tanine.
+
+Phaeton stopped attempting to fiddle with wires and cake at the same time without ingesting wires. He looked up.
+
+"Interesting. How old was this Paul Tanine?
+
+See See felt like they were getting somewhere.
+
+"He was older than me. But not by much. Probably should be in college or something. But he said he was running a company. Sounded like just barely. Apparently, he had been trying to sell the Director something. Said his father got in the way, somehow. The Director knew his dad. Like they were friends and somehow that was a problem. Anyway, that's pretty much it. Then Mom pulled me away.
+
+Phaeton wiped cake off his face with his sleeve. In the process, deposited a streak of grimy lubricant. He considered his daughter carefully. This was an interesting situation, he thought. So far, See See had had friends who were boys, some of whom were pretty interested in See See. Most more than she seemed in them. Presumably this is how it starts. He was damned if he was going to do the dad thing and have anything like The Talk, such as he imagined it, standing in a windy box fifteen stories in the air below high-powered electronics and the whole universe expanding. Not his thing.
+
+However, some gossip might be useful.
+
+"Ok. I maybe see what your mom was thinking. I think I know who this Paul Tanine is. His family is a bit, well, odd. Not entirely savory, you see. I met them twentyish years ago. Before you were born. Your mum thinks it was a close shave. She's dramatic. Perhaps a close shave for someone else though.
+
+He paused. Since See See seemed interested, he continued.
+
+"I'll tell you a story. Alright? I'll embellish, fabricate and assassinate various people's characters ruthlessly to see if I can keep your attention. Sound good?
+
+See See was a tiny bit skeptical. Still, overall, she thought that it did.
+
+
+

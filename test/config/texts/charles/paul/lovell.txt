@@ -1,0 +1,58 @@
+1971 - Paul observes Saharalee at Jodrell Bank, England
+
+Saharalee Athair, called See See, was alone in the control room when part of the grant-award party crashed in. She had considered giving some attention to her homework. Considered, but decided against. It wasn't that it was technically challenging. However, the effort to focus on it was, she had to admit, almost beyond her abilities. Hence the control room. There was trouble she could get into there.
+
+Jodrell's Lovell Telescope was quietly moving into the last of the sun. It was about two hundred meters beyond the twenty-foot floor-to-ceiling plate glass windows. The dish was angled at about a thirty-five-degree elevation, its azimuth about two hundred and seventy. The steel face was glowing like a furnace. All two thousand plus tons moved, almost imperceptibly. See See just watched. The sight never got old.
+
+The control room was like something out of |2001: A Space Odyssey|. White tile floor, raised. High cement ceiling with recessed downlights. The side walls slightly angled-in from the glass interior wall. They became straight and turned transparent twenty feet into the room. The result was a clear box projecting ten feet from the building, cantilevered eight feet off the ground, staring straight at the World's largest radio telescope.
+
+The movie set ambiance was reinforced by the computing and radio equipment, and the telescope driving controls. See See sat in a large swivel chair at a semi-circle desk with a six-faced console of large knobs, dials, and indicator lights. She had a mechanical pencil and a protractor sitting precisely beside her physics textbook. They were in the place where star maps, coordinate movement instructions, and radio analysis would have been, were she a real radio dish driver.
+
+Wrapped around her in a Stonehenge-like circle was a twelve-faceted amphitheater of analog and digital computing. On the left, when looking out the windows over the control desk at the telescope, were six six-foot obelisks. Most running three reels of three-quarter-inch magnetic tape. Each had a glass window two-foot square at the bottom showing tubes, connections, and power.
+
+Across, on the right, six more of the same, their off-white corners meeting in the same way. Except instead of magnetic storage and other computing apparatus, each facet's face held three tape reel-sized dials. The dials showed hours, minutes, and seconds in universal time and sidereal time. Elevation and azimuth. Latitude and Longitude. Ascension and declination. And other proprioception indicators of the giant telescope.
+
+Despite all the equipment and the futuristic layout, there was no fisheyed homicidal AI in evidence. See See thought there could well have been, had someone been doing their job. Unfortunately, despite the solid effort at Jodrell, England didn't produce Hollywood.
+
+Nevertheless, there was a stand-alone computer, in fact, sitting in a darker corner looking lost. A systems tech had been at the telescope console when See See came up to the glass to eye the awkward box in the corner. The tech felt there wasn't a lot that could go wrong with the telescope. He called See See in and seated her at the desk. She was to come find him if any of three certain lights lit up. See See encouraged his optimism and said yes, she would. He left to find the party and a drink.
+
+For herself, See See thought she might have a chance to have a go at the little computer. She knew nothing of computers, other than that they were cool. She would fiddle with it and learn. It was a PDP-11. Fresh off the boat from Massachusetts. As yet morose and unloved.
+
+See See knew where the instruction books were. She had not just happened along. So far, no PDP-11 experts had been minted at Jodrell. Most of the books were still wrapped. The unit was experimental. There it was, quietly waiting for her. She had just pulled |Getting Started With PDP-11| out of the cupboard when the door opened behind her. It opened just a little bit too hard.
+
+The man who didn't respect the physics of doors stopped. He had thought the half-lit room empty. The fading glow of the telescope had pulled him in. The sixteen-year-old operator apparently in charge of it pulled him up short.
+
+"Ah, ha. Are you the person I see about observing the future?
+
+Paul Tanine was not drunk. Drunk was visible in the distance. One didn't need a telescope.
+
+"Perhaps, I could be of assistance. What quadrant of the future do you wish to observe?
+
+Paul thought hard.
+
+"Hmm. Well, I suppose the part of the future where I can walk into the Director's office without him thinking he's doing my father a favor.
+
+See See screwed up one side of her face, cocked her head, gestured to a star map on the wall near the door.
+
+"I think that's in our galaxy, then. Definitely north of the ecliptic. Could be quite a few lightyears off though.
+
+Paul sighed.
+
+"That's what I'm afraid of. That and my father's huge gravity well. Very problematic.
+
+He stepped up to the control station.
+
+"I'm Paul Tanine. It's good to meet you.
+
+See See relaxed her calculating-the-distance-to-the-future face.
+
+"I'm Saharalee Athair. You can call me See See. Everybody does around here.
+
+What was Paul doing prowling around the center of the radio astronomy universe with an elevated blood alcohol level? He was sniffing around for business in places where he could get a foot in the door. Paul had set himself up with a company. Mac had helped him set it up. After a fashion. And the Tanine name was helping open doors. To a degree. Paul wished he could do without the help.
+
+More than a year before his visit Paul had double-crossed his dad in a way only a Tanine would. He hadn't exactly fled to Manchester. He was however metaphorically and literally looking over his shoulder. Paul didn't think Mac would jump from behind a bush and kosh him in the head. His dad had people for that.
+
+He was however expecting something. Klade, or one of Klade's people, or, more likely, a faceless solicitor, to pop out from behind a tree and begin tearing down the scaffolding of Paul's fledgling company. It was possible. Since it was possible, Paul proceeded on the assumption. Under the circumstances, like any good entrepreneur, he both grew a bit paranoid and began to boldly take risks.
+
+Bearding the Director of Jodrell Bank Observatory unexpectedly by crashing a party was the latter.
+
