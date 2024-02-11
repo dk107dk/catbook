@@ -2,3 +2,8 @@
 old
 __pycache__
 test/_scratch
+~*
+*.doc
+*.docx
+books
+
