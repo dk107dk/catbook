@@ -56,10 +56,12 @@ class RegularSection(Section):
 
     def _append_quote(self) -> None:
         """adds the quote into the document"""
-        if not self._quote:
+        if self._quote is None:
             raise Exception("No quote array found at _append_quote")
         i = len(self._quote)
         for aline in self._quote:
+            if aline is None:  # make mypy happy
+                continue
             p = self.doc.add_paragraph()
             paragraph_format = p.paragraph_format
             run = self._add_run(p, f"   {aline[1:]}")
@@ -76,6 +78,8 @@ class RegularSection(Section):
             raise Exception("No block array found at _append_block")
         i = len(self._block)
         for aline in self._block:
+            if aline is None:  # make mypy happy
+                continue
             p = self.doc.add_paragraph()
             paragraph_format = p.paragraph_format
             thisline = aline[1:]

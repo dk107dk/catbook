@@ -5,7 +5,7 @@ def main():
     builder = Builder()
     builder.init()
 
-    builder.files.OUTPUT = "./test.docx"
+    builder.files.OUTPUT = "./A Cold Hard Material.docx"
     builder.files.INPUT = "test/config/charles.bookfile"
     builder.files.FILES = "test/config/texts/charles"
 

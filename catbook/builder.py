@@ -65,28 +65,14 @@ class Builder:
         self._files = f
 
     def build(self):
-        # print("Starting build")
         if None in [self._markup, self._fonts, self._files, self.doc]:
-            # print("Initialization required")
             self.init()
         if not self._validate():
             raise BadConfigException(
                 f"Cannot start build with files config: {self.files}"
             )
         self._clean_output()
-
-        # build happens here
-        """
-        self.book = Book(
-            files=self._files, markup=self._markup, fonts=self._fonts, document=self.doc
-        )
-        """
         self.book.create()
-        #
-        # need configuration to do this or not do it
-        #
-        self.book.append_metadata()
-
         self._save()
         self._reset()
 

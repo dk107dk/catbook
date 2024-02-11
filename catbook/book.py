@@ -55,6 +55,7 @@ class Book:
         for row in rows:
             if len(row[0]) > 0 and row[0][0] == "#":
                 self._check_for_inserts(row)
+                self._check_for_metadata(row)
             else:
                 try:
                     # build the book here
@@ -140,6 +141,12 @@ class Book:
             composer = Composer(self._document)
             doc2 = Document(path)
             composer.append(doc2)
+
+    def _check_for_metadata(self, line: str) -> None:
+        token = "METADATA"
+        insert = line.find(token)
+        if insert > 0:
+            self.append_metadata()
 
     def append_metadata(self):
         section = MetadataSection(

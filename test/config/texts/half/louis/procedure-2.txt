@@ -1,0 +1,50 @@
+***
+||Excerpted from:|
+"THE 1885 INTERNATIONAL ASTROPHOTOGRAPHIC CONGRESS
+"AND VISITS TO CERTAIN EUROPEAN OBSERVATORIES
+"A. BELWATRE
+
+"Lieutenant, Delegate, US Naval Observatory, to the Astrophotographic Congress; Mitglied Der Astronomischen Gesellschaft; Member, American Association For the Advancement of Science; Membre Associé Étranger, Congres International Photographique de L'Exposition Universelle, 1889.
+
+             ────────────────────────
+
+"ART. 1. Three classes of trials are instituted for pocket chronometers.
+
+"ART. 2. Chronometers obtaining a rate-paper must satisfy:
+
+"First. For conditions of position and temperature, daily rate not to exceed 10ₛ. Mean daily range not to exceed 1.5ₛ.
+"Second. Rate difference lying flat versus suspended must not exceed 9ₛ.
+"Third. Compensation error must not exceed 0.50ₛ.
+
+"ART. 3. Trials are of eight periods:
+
+| ┌──────┬───────────────────────┬────────┐
+| │ Days │      Position         │ Temp   │
+| ├──────┼───────────────────────┼────────┤
+| │   5  │ Vertical, pendant-up  │ Room   │
+| │   5  │ Vertical, pendant-rt  │ Room   │
+| │   5  │ Vertical, pendant-lt  │ Room   │
+| │   6  │ Horizontal, dial-up   │ Refrig │
+| │   6  │ Horizontal, dial-up   │ Room   │
+| │   6  │ Horizontal, dial-up   │ Oven   │
+| │   6  │ Horizontal, dial-down │ Room   │
+| │   5  │ Vertical, pendant-up  │ Room   │
+| └──────┴───────────────────────┴────────┘
+
+"The first days of the fourth, fifth, sixth, and seventh periods are "intermediates", not counting in calculation. Each period utilizes only the remaining days.
+
+"ART. 4. The period mean rate is the variation of mean from daily rate during the five days of the period. The arithmetical mean of forty ranges so obtained is the mean range of daily rate.
+
+"ART. 5. Mean rate for the six periods, 1. 2, 3, 5, 7, 8, is calculated; the difference between this general mean and that obtained for each of six periods. The arithmetical mean of the six ranges is the mean range for a change of position.
+
+"ART. 6. Compensation error is deduced from periods 4, 5, and 6.
+
+"ART. 7. To obtain a rate-paper, chronometers submitted for First-class trials must fulfill conditions of article 2, and also comply with the following: mean range for changed position not to exceed 5ₛ.
+
+"ART. 8. In order that the paper makes mention of rate as "very satisfactory," the chronometer must satisfy the following:
+
+"First: mean rate daily range not exceed 0.75ₛ
+"Second: mean position change range not to exceed 2.5ₛ
+"Third: compensation error not exceed 0.20ₛ
+
+
