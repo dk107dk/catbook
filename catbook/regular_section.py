@@ -29,6 +29,9 @@ class RegularSection(Section):
 
     def compile(self) -> bool:
         """returns True if the lines were all added to the document"""
+        reqs = [self._markup, self._fonts, self._document, self._metadata]
+        if None in reqs:
+            raise Exception(f"Requirements not setup: {reqs}")
         line_number = 0
         for line in self._lines:
             try:

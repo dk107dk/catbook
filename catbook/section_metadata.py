@@ -27,6 +27,8 @@ class SectionMetadata(Metadata):
         return len(words)
 
     def set_first_line(self, markup: Markup, line: str) -> None:
+        if markup is None:
+            raise SectionContentException("Markup cannot be None")
         if line is None:
             raise SectionContentException("Line cannot be None")
         line = line.strip()

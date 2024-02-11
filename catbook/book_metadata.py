@@ -12,6 +12,30 @@ class BookMetadata(Metadata):
     TITLE: str = ""
     AUTHOR: str = ""
 
+    def __post_init__(self):
+        self.seek_metadata()
+
+    def seek_metadata(self) -> None:
+        if self.FILES is None or self.FILES.INPUT is None:
+            return
+        if self.TITLE == "" or self.TITLE is None:
+            title = self._seek("TITLE")
+            if title is not None:
+                self.TITLE = title
+        if self.AUTHOR == "" or self.AUTHOR is None:
+            author = self._seek("AUTHOR")
+            if author is not None:
+                self.AUTHOR = author
+
+    def _seek(self, token: str) -> Optional[str]:
+        if token not in ["TITLE", "AUTHOR"]:
+            raise Exception("token must be either title or author")
+        with open(self.FILES.INPUT) as file:
+            for line in file:
+                if line[0] == "#" and line.find(token) > 0:
+                    return line[(line.find(token) + len(token) + 1) :].strip()
+        return None
+
     @property
     def count(self) -> int:
         return len(self.SECTIONS)

@@ -5,14 +5,10 @@ def main():
     builder = Builder()
     builder.init()
 
-    print("test_output: resetting output and input!")
     builder.files.OUTPUT = "./test.docx"
     builder.files.INPUT = "test/config/charles.bookfile"
     builder.files.FILES = "test/config/texts/charles"
 
-    print(f"\n>>>>>> test_output: files are now {builder.files}")
-    builder.book.metadata.AUTHOR = "David Kershaw"
-    builder.book.metadata.TITLE = "A Cold Hard Material"
     builder.build()
     print(f"words: {builder.book.metadata.word_count}")
 
