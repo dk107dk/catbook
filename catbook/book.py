@@ -10,6 +10,7 @@ from docx import Document
 import traceback
 from typing import List, Optional
 import os
+from docxcompose.composer import Composer
 
 
 class UnknownBookfileTypeException(Exception):
@@ -53,7 +54,7 @@ class Book:
         rows = self._get_rows()
         for row in rows:
             if len(row[0]) > 0 and row[0][0] == "#":
-                pass
+                self._check_for_inserts(row)
             else:
                 try:
                     # build the book here
@@ -130,6 +131,15 @@ class Book:
                 metadata=section_metadata,
             )
             section.compile()
+
+    def _check_for_inserts(self, line: str) -> None:
+        token = "INSERT:"
+        insert = line.find(token)
+        if insert > 0:
+            path = line[insert + len(token) :].strip()
+            composer = Composer(self._document)
+            doc2 = Document(path)
+            composer.append(doc2)
 
     def append_metadata(self):
         section = MetadataSection(

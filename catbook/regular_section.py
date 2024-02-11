@@ -37,7 +37,7 @@ class RegularSection(Section):
             try:
                 self._append_line(self._lines, line, line_number)
                 line_number = line_number + 1
-                self._lines_count = self._lines_count + 1
+                # self._lines_count = self._lines_count + 1
             except Exception as e:
                 print(f"Error in section at {line_number}: {line}: {e}")
                 return False
