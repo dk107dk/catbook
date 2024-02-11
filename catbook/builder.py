@@ -23,15 +23,25 @@ class Builder:
     # ========== PUBLIC STUFF GOES HERE
 
     def init(self) -> None:
-        self._markup = Markup()
-        self._fonts = Fonts()
-        self._files = Files()
+        if self._markup is None:
+            self._markup = Markup()
+        if self._fonts is None:
+            self._fonts = Fonts()
+        if self._files is None:
+            self._files = Files()
         self._new_document()
         self._book: Optional[Book] = None
-        print("Done initalizing")
 
     @property
     def book(self) -> Optional[Book]:
+        if self._book is None:
+            self.init()
+            self.book = Book(
+                files=self._files,  # type: ignore [arg-type]
+                markup=self._markup,
+                fonts=self._fonts,
+                document=self.doc,
+            )
         return self._book
 
     @book.setter
@@ -55,9 +65,9 @@ class Builder:
         self._files = f
 
     def build(self):
-        print("Starting build")
+        # print("Starting build")
         if None in [self._markup, self._fonts, self._files, self.doc]:
-            print("Initialization required")
+            # print("Initialization required")
             self.init()
         if not self._validate():
             raise BadConfigException(
@@ -66,10 +76,16 @@ class Builder:
         self._clean_output()
 
         # build happens here
+        """
         self.book = Book(
             files=self._files, markup=self._markup, fonts=self._fonts, document=self.doc
         )
+        """
         self.book.create()
+        #
+        # need configuration to do this or not do it
+        #
+        self.book.append_metadata()
 
         self._save()
         self._reset()

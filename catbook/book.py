@@ -3,10 +3,12 @@ from . import Files
 from . import Markup
 from . import Fonts
 from . import Section
+from . import RegularSection
+from . import MetadataSection
 from . import BookMetadata
 from docx import Document
 import traceback
-from typing import List
+from typing import List, Optional
 import os
 
 
@@ -24,14 +26,18 @@ class BookfileMistakeException(Exception):
 
 class Book:
     def __init__(
-        self, files: Files, markup: Markup, fonts: Fonts, document: Document
+        self,
+        files: Files,
+        markup: Optional[Markup],
+        fonts: Optional[Fonts],
+        document: Document,
     ) -> None:
         self._files = files
         self._fonts = fonts
         self._markup = markup
         self._file_count = 0
         self._document = document
-        self._metadata = BookMetadata()
+        self._metadata = BookMetadata(FILES=files)
 
     @property
     def files(self) -> int:
@@ -116,11 +122,21 @@ class Book:
 
         with open(path, "r") as contents:
             lines = contents.readlines()
-            section = Section(
+            section = RegularSection(
                 lines,
-                markup=self._markup,
-                fonts=self._fonts,
+                markup=self._markup,  # type: ignore [arg-type]
+                fonts=self._fonts,  # type: ignore [arg-type]
                 document=self._document,
                 metadata=section_metadata,
             )
             section.compile()
+
+    def append_metadata(self):
+        section = MetadataSection(
+            None,
+            markup=self._markup,
+            fonts=self._fonts,
+            document=self._document,
+            metadata=self.metadata,
+        )
+        section.compile()

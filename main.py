@@ -11,8 +11,10 @@ def main():
     builder.files.FILES = "test/config/texts/charles"
 
     print(f"\n>>>>>> test_output: files are now {builder.files}")
+    builder.book.metadata.AUTHOR = "David Kershaw"
+    builder.book.metadata.TITLE = "A Cold Hard Material"
     builder.build()
-    print(f"words: {builder.book.metadata.word_count()}")
+    print(f"words: {builder.book.metadata.word_count}")
 
     """
     count = 0

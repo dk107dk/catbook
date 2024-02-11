@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from typing import List, Optional
 from . import Markup
+from . import Metadata
 
 
 class SectionContentException(Exception):
@@ -8,7 +9,7 @@ class SectionContentException(Exception):
 
 
 @dataclass
-class SectionMetadata:
+class SectionMetadata(Metadata):
     FILE: Optional[str] = None
     RELATIVE_PATH: Optional[str] = None
     NAME: Optional[str] = None
@@ -18,6 +19,12 @@ class SectionMetadata:
     CHAR_COUNT: int = 0
     WORD_COUNT: int = 0
     WORDS: List[str] = field(default_factory=list)
+
+    def unique_words_count(self) -> int:
+        words = {}
+        for w in self.WORDS:
+            words[w] = w
+        return len(words)
 
     def set_first_line(self, markup: Markup, line: str) -> None:
         if line is None:

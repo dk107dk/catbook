@@ -1,4 +1,4 @@
-from catbook import Section
+from catbook import RegularSection
 from catbook import Markup
 from catbook import Fonts
 from catbook import Builder
@@ -6,7 +6,7 @@ from docx import Document
 
 
 def test_last_line():
-    section = Section([], None, None, None, None)
+    section = RegularSection([], None, None, None, None)
 
     assert section._last_line(["", "", ""], 2)
     assert section._last_line(["a", "", ""], 0)
@@ -20,7 +20,7 @@ def test_handle_block():
     markup = Markup()
     markup.BLOCK = "|"
     document = Document()
-    section = Section(
+    section = RegularSection(
         lines=[], markup=markup, fonts=fonts, document=document, metadata=None
     )
 
@@ -36,7 +36,7 @@ def test_handle_quote():
     markup = Markup()
     markup.QUOTED_LINE = '"'
     document = Document()
-    section = Section(
+    section = RegularSection(
         lines=[], markup=markup, fonts=fonts, document=document, metadata=None
     )
 
@@ -51,7 +51,7 @@ def test_tokenize_example_strings():
     markup = Markup()
     markup.QUOTED_LINE = '"'
     document = Document()
-    section = Section(
+    section = RegularSection(
         lines=[], markup=markup, fonts=fonts, document=document, metadata=None
     )
 
