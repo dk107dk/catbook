@@ -44,7 +44,14 @@ still/morefiles/section-2.txt
 
 ___
 
-## Markup
+## Sections and Markup
+
+Each text file that is concatenated into the docx is a "section". Sections have two parts:
+
+- The first line
+- All other lines
+
+The first line is presented as a title, subject to the markup described below. Every other line becomes a paragraph. Catbook skips blank lines. If the first line is blank the section will have no title to distinguish it from the section before it.
 
 There are a very small number of markups to do things like italicize quotes, force a page break between sections, etc. Markup chars and fonts are minimally customizable using .ini files. See catbook/markup.py and catbook/fonts.py.
 
