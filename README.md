@@ -14,7 +14,24 @@ Catbook reads a flat list of text files from a "bookfile" and concatenates them 
 
 There are a very small number of markups to do things like italicize quotes, force a page break between sections, etc. Markup chars and fonts are minimally customizable using .ini files. See catbook/markup.py and catbook/fonts.py.
 
-Metadata about the files that are concatenated as sections of the doc is available from the Book object. Bookfiles can specify title and author using directives in comment lines starting with #. Preexisting docx files may be inserted using insert directives in the bookfile. Adding a # METADATA directive inserts a page with a table containing the author, title, bookfile, word count and other metadata.
+Metadata about the files that are concatenated as sections of the doc is available from the Book object and each section.
+
+Bookfiles can have comments that are lines starting with #. You can specify the TITLE and AUTHOR directives. Preexisting docx files may be inserted using INSERT directives in the bookfile. Adding a METADATA directive inserts a page with a table containing the author, title, bookfile, word count and other metadata.
+
+For e.g.
+```
+\#
+\# this is a complete bookfile
+\# TITLE This is my book.
+\# AUTHOR John Doe
+\#
+\# INSERT another/file.docx
+\#
+filesdir/section-1.txt
+morefiles/section-2.txt
+\# METADATA
+\#
+```
 
 For usage, see main.py and/or test/test_builder.py.
 
