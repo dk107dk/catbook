@@ -16,21 +16,21 @@ There are a very small number of markups to do things like italicize quotes, for
 
 Metadata about the files that are concatenated as sections of the doc is available from the Book object and each section.
 
-Bookfiles can have comments that are lines starting with #. You can specify the TITLE and AUTHOR directives. Preexisting docx files may be inserted using INSERT directives in the bookfile. Adding a METADATA directive inserts a page with a table containing the author, title, bookfile, word count and other metadata.
+Bookfiles can have comments lines starting with #. You can specify the TITLE and AUTHOR using directives; they will be shown in the book's metadata. Preexisting docx files may be inserted using INSERT directives. Adding a METADATA directive inserts a page with a table containing the author, title, bookfile path, word count and other metadata.
 
 For e.g.
 ```
-\#
-\# this is a complete bookfile
-\# TITLE This is my book.
-\# AUTHOR John Doe
-\#
-\# INSERT another/file.docx
-\#
+#
+# this is a complete bookfile
+# TITLE This is my book.
+# AUTHOR John Doe
+#
+# INSERT another/file.docx
+#
 filesdir/section-1.txt
 morefiles/section-2.txt
-\# METADATA
-\#
+# METADATA
+#
 ```
 
 For usage, see main.py and/or test/test_builder.py.
