@@ -10,13 +10,18 @@ The tool needed to:
 * Include only the absolute minimum of markup and functionality
 ___
 
-Catbook reads a flat list of text files from a "bookfile" and concatenates them into a Word doc. The doc may have up to three levels. The levels are titled using Word styles.
+## Bookfiles
 
-There are a very small number of markups to do things like italicize quotes, force a page break between sections, etc. Markup chars and fonts are minimally customizable using .ini files. See catbook/markup.py and catbook/fonts.py.
+Catbook reads a flat list of text files from a .bookfile and concatenates them into a Word doc. The doc may have up to three levels. The levels are titled using Word styles.
 
-Metadata about the files that are concatenated as sections of the doc is available from the Book object and each section.
+Metadata about the files that are concatenated into the docx is available from the Book object and each section.
 
-Bookfiles can have comments lines starting with #. You can specify the TITLE and AUTHOR using directives; they will be shown in the book's metadata. Preexisting docx files may be inserted using INSERT directives. Adding a METADATA directive inserts a page with a table containing the author, title, bookfile path, word count and other metadata.
+Bookfiles can include several things besides paths to text files.
+
+* Comments as lines starting with #
+* TITLE and AUTHOR to be shown in the book's metadata
+* INCLUDE of preexisting docx
+* A METADATA directive that inserts a page with a table containing the author, title, bookfile path, word count and other metadata.
 
 For e.g.
 ```
@@ -35,6 +40,38 @@ still/morefiles/section-2.txt
 # METADATA
 #
 ```
+___
+
+## Markup
+
+There are a very small number of markups to do things like italicize quotes, force a page break between sections, etc. Markup chars and fonts are minimally customizable using .ini files. See catbook/markup.py and catbook/fonts.py.
+
+
+
+* Book title: ~~
+A book title is the first line of a text file. It is the top grouping unit in the same way that a first-level heading in a docx is the top of a TOC. Book titles contain chapters and sections.
+
+* Chapter title: ~
+A title is the first line of a text file. It is a 2nd level grouping that is below a book and above section
+
+* Stand-alone section: >
+This markup must be the first char of the first line of a text file. It forces the section to start on a new page
+
+* Jump: \***
+A jump is on the first line of a text file. Jumps creates a break within a chapter by adding an untitled section. The section is separated from the preceding section by an indicator. As is often done, we use three widely spaced stars as the indicator. The jump is not configurable at this time.
+
+* Block: |
+A block may start on any line. The markup must be the first char. Blocks are text that is set off from the rest of the paragraphs in a different font.
+
+* Quoted line: "
+A quote may start on any line. The markup must be the first char. A quote is another type of block. This markup is also useful for forcing a blank line. To make a blank line put the markup in the first char of an otherwise empty line.
+
+* Highlighted text: |
+Put pipes around any word or words to highlight them.  Assuming | is used for both highlights and blocks, if a highlight begins with the first word of a paragraph it will look like a block. In that case use a double highlight mark, as in:
+```
+||some words| that start a line.
+```
+___
 
 For usage, see main.py and/or test/test_builder.py.
 
