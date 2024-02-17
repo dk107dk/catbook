@@ -24,6 +24,7 @@ class RegularSection(Section):
         metadata: Metadata,
     ) -> None:
         super().__init__(lines, markup, fonts, document, metadata)
+        # self._quote: Optional[List[str]] = None
 
     # ============= PUBLIC STUFF HERE
 
@@ -56,7 +57,7 @@ class RegularSection(Section):
 
     def _append_quote(self) -> None:
         """adds the quote into the document"""
-        if self._quote is None:
+        if self._quote is None:  # type: ignore [has-type]
             raise Exception("No quote array found at _append_quote")
         i = len(self._quote)
         for aline in self._quote:

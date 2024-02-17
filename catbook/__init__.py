@@ -1,4 +1,5 @@
 from catbook.markup import Markup
+from catbook.misc import Misc
 from catbook.fonts import Fonts
 from catbook.files import Files
 from catbook.metadata import Metadata

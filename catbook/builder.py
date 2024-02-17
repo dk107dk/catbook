@@ -1,6 +1,7 @@
 from . import Markup
 from . import Fonts
 from . import Files
+from . import Misc
 from . import Book
 from docx import Document
 from os import remove
@@ -18,6 +19,7 @@ class Builder:
         self._markup: Optional[Markup] = None
         self._fonts: Optional[Fonts] = None
         self._files: Optional[Files] = None
+        self._misc: Optional[Misc] = None
         self._document: Optional[Document] = None
 
     # ========== PUBLIC STUFF GOES HERE
@@ -29,6 +31,8 @@ class Builder:
             self._fonts = Fonts()
         if self._files is None:
             self._files = Files()
+        if self._misc is None:
+            self._misc = Misc()
         self._new_document()
         self._book: Optional[Book] = None
 
@@ -63,6 +67,14 @@ class Builder:
     @files.setter
     def files(self, f: Files) -> None:
         self._files = f
+
+    @property
+    def misc(self) -> Optional[Misc]:
+        return self._misc
+
+    @misc.setter
+    def misc(self, m: Misc) -> None:
+        self._misc = m
 
     def build(self):
         if None in [self._markup, self._fonts, self._files, self.doc]:
