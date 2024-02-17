@@ -22,14 +22,14 @@ For e.g.
 ```
 #
 # this is a complete bookfile
-# TITLE This is my book
-# AUTHOR John Doe
+# TITLE: This is my book
+# AUTHOR: John Doe
 #
-# INSERT an-existing/file.docx
+# INSERT: an-existing/file.docx
 #
 filesdir/section-1.txt
 morefiles/section-2.txt
-# INSERT another/file.docx
+# INSERT: another/file.docx
 still/morefiles/section-2.txt
 #
 # METADATA
