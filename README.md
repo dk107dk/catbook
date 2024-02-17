@@ -145,4 +145,7 @@ if __name__ == "__main__":
     main()
 ```
 
+The output looks like this:
+
+<img width="75%" height="75%" src="https://raw.githubusercontent.com/catbook/cdocs/master/output.png"/>
 
