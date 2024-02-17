@@ -111,7 +111,7 @@ There are more |highlighted words| in this line.
 
 ___
 
-##Usage
+## Usage
 
 For usage, see main.py and/or test/test_builder.py.
 
