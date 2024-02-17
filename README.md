@@ -111,9 +111,27 @@ There are more |highlighted words| in this line.
 
 ___
 
+##Usage
+
 For usage, see main.py and/or test/test_builder.py.
 
+This code creates a docx file called My Book.docx in the working directory. It uses the charles.bookfile to know what text files to concatenate. The text files live in the directories below test/config/texts/charles and the bookfile refers to them relative to that path.
 
+```
+from catbook import Builder
 
+def main():
+    builder = Builder()
+    builder.init()
+    builder.files.OUTPUT = "./My Book.docx"
+    builder.files.INPUT = "test/config/charles.bookfile"
+    builder.files.FILES = "test/config/texts/charles"
+
+    builder.build()
+    print(f"words: {builder.book.metadata.word_count}")
+
+if __name__ == "__main__":
+    main()
+```
 
 
