@@ -8,6 +8,7 @@ The tool needed to:
 * Offer a trivially easy way to differentiate quotes, blocks, and special words
 * Support three levels of hierarchy
 * Include only the absolute minimum of markup and functionality
+
 ___
 
 ## Bookfiles
@@ -40,6 +41,7 @@ still/morefiles/section-2.txt
 # METADATA
 #
 ```
+
 ___
 
 ## Markup
@@ -49,14 +51,14 @@ There are a very small number of markups to do things like italicize quotes, for
 
 * Book title: ~~
 
-A book title is the first line of a text file. It is the top grouping unit in the same way that a first-level heading in a docx is the top of a TOC. Book titles contain chapters and sections.
+A book title is the first line of a text file. The markup must be the first char. Book titles are the top grouping unit in the same way that a first-level heading in a docx is the top of a TOC. Book titles contain chapters and sections.
 ```
 ~~Book One: A New Hope
 ```
 
 * Chapter title: ~
 
-A title is the first line of a text file. It is a 2nd level grouping that is below a book and above section
+A title is the first line of a text file. The markup must be the first char. Chapter titles are a 2nd level grouping that is below a book and above section
 ```
 ~Chapter ten: In which a storm gathers
 ```
@@ -71,7 +73,7 @@ In 1918 the empire slept...
 
 * Jump: \***
 
-A jump is on the first line of a text file. Jumps creates a break within a chapter by adding an untitled section. The section is separated from the preceding section by an indicator. As is often done, we use three widely spaced stars as the indicator. The jump is not configurable at this time.
+A jump is on the first line of a text file. Jumps creates a break within a chapter by adding an untitled section. The section is separated from the preceding section by an indicator. As is often done, Catbook uses three widely spaced stars as the indicator. The jump is not configurable at this time.
 ```
 ***
 In this section I will show that...
@@ -92,15 +94,21 @@ The letter said
 A quote may start on any line. The markup must be the first char. A quote is another type of block. This markup is also useful for forcing a blank line. To make a blank line put the markup in the first char of an otherwise empty line.
 ```
 "Hey!
-Jack said.
+Jack said. But it was quiet.
+
+"
+Eventually there was a sound.
 ```
 
 * Highlighted text: |
 
-Put pipes around any word or words to highlight them.  Assuming | is used for both highlights and blocks, if a highlight begins with the first word of a paragraph it will look like a block. In that case use a double highlight mark, as in:
+Put pipes around any word or words to highlight them.  Assuming | is used for both highlights and blocks, if a highlight begins with the first word of a paragraph it looks like a block. In that case use a double highlight mark, as in:
 ```
-||some words| that start a line.
+||some highlighted words| that start a line.
+
+There are more |highlighted words| in this line.
 ```
+
 ___
 
 For usage, see main.py and/or test/test_builder.py.
