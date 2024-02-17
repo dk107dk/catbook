@@ -47,26 +47,56 @@ ___
 There are a very small number of markups to do things like italicize quotes, force a page break between sections, etc. Markup chars and fonts are minimally customizable using .ini files. See catbook/markup.py and catbook/fonts.py.
 
 
-
 * Book title: ~~
+
 A book title is the first line of a text file. It is the top grouping unit in the same way that a first-level heading in a docx is the top of a TOC. Book titles contain chapters and sections.
+```
+~~Book One: A New Hope
+```
 
 * Chapter title: ~
+
 A title is the first line of a text file. It is a 2nd level grouping that is below a book and above section
+```
+~Chapter ten: In which a storm gathers
+```
 
 * Stand-alone section: >
+
 This markup must be the first char of the first line of a text file. It forces the section to start on a new page
+```
+>1918: Vienna
+In 1918 the empire slept...
+```
 
 * Jump: \***
+
 A jump is on the first line of a text file. Jumps creates a break within a chapter by adding an untitled section. The section is separated from the preceding section by an indicator. As is often done, we use three widely spaced stars as the indicator. The jump is not configurable at this time.
+```
+***
+In this section I will show that...
+```
 
 * Block: |
+
 A block may start on any line. The markup must be the first char. Blocks are text that is set off from the rest of the paragraphs in a different font.
+```
+The letter said
+|Dear Jack.
+|I hope you've been well.
+
+```
 
 * Quoted line: "
+
 A quote may start on any line. The markup must be the first char. A quote is another type of block. This markup is also useful for forcing a blank line. To make a blank line put the markup in the first char of an otherwise empty line.
+```
+"Hey!
+Jack said.
+```
 
 * Highlighted text: |
+
 Put pipes around any word or words to highlight them.  Assuming | is used for both highlights and blocks, if a highlight begins with the first word of a paragraph it will look like a block. In that case use a double highlight mark, as in:
 ```
 ||some words| that start a line.
