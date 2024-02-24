@@ -23,7 +23,6 @@ class Section(metaclass=abc.ABCMeta):
         self._document: Document = document
         self._block: Optional[List[Optional[str]]] = None
         self._quote: Optional[List[Optional[str]]] = None
-        # self._lines_count: int = 0
         self._part_break: bool = False
         self._last_was_break = False
         self._metadata = metadata
@@ -31,6 +30,10 @@ class Section(metaclass=abc.ABCMeta):
     @property
     def doc(self) -> Document:
         return self._document
+
+    @property
+    def markup(self) -> Markup:
+        return self._markup
 
     @abc.abstractmethod
     def compile(self) -> bool:

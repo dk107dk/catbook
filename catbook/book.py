@@ -138,6 +138,11 @@ class Book:
         insert = line.find(token)
         if insert > 0:
             path = line[insert + len(token) :].strip()
+
+            # import docxcompose.composer as dx
+            # print(f"composer is at: {dx.__file__}")
+            # self._document.add_picture('image.png')
+
             composer = Composer(self._document)
             doc2 = Document(path)
             composer.append(doc2)

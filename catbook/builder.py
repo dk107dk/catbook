@@ -61,6 +61,14 @@ class Builder:
         self._document = d
 
     @property
+    def markup(self) -> Optional[Markup]:
+        return self._markup
+
+    @markup.setter
+    def markup(self, m: Markup) -> None:
+        self._markup = m
+
+    @property
     def files(self) -> Optional[Files]:
         return self._files
 
@@ -75,6 +83,14 @@ class Builder:
     @misc.setter
     def misc(self, m: Misc) -> None:
         self._misc = m
+
+    @property
+    def fonts(self) -> Optional[Fonts]:
+        return self._fonts
+
+    @fonts.setter
+    def fonts(self, f: Fonts) -> None:
+        self._fonts = f
 
     def build(self):
         if None in [self._markup, self._fonts, self._files, self.doc]:

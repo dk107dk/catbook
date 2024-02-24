@@ -53,7 +53,14 @@ Each text file that is concatenated into the docx is a "section". Sections have 
 - The first line
 - All other lines
 
-The first line is presented as a title, subject to the markup described below. Every other line becomes a paragraph. Catbook skips blank lines. If the first line is blank the section will have no title to distinguish it from the section before it.
+The first line is presented as a title, subject to the markup described below. Every other line becomes a paragraph. Catbook skips blank lines. If the first line is blank the section will have no title to distinguish it from the section before it. On the other hand, there can be any number of comment lines before the title line.
+
+### Comments
+
+Any line that begins with a # is considered a comment. Comment lines are skipped. Each comment will be checked for an include directive that includes an image. Images are centered in a paragraph. The directive is in the form:
+```
+# INCLUDE IMAGE: path/to/my/image.png
+```
 
 ### Markups
 
@@ -84,11 +91,15 @@ In 1918 the empire slept...
 
 * Jump: \***
 
-A jump is on the first line of a text file. Jumps creates a break within a chapter by adding an untitled section. The section is separated from the preceding section by an indicator. As is often done, Catbook uses three widely spaced stars as the indicator. The jump is not configurable at this time.
+A jump is on the first line of a text file. Jumps creates a break within a chapter by adding an untitled section. The section is separated from the preceding section by an indicator called an asterism. Most commonly the asterism is three widely spaced stars. The asterism text is set as the ASTERISM.
 ```
 ***
 In this section I will show that...
 ```
+
+* Asterism: \*                           ⁂                           \*
+
+The asterism is a section separator that is inserted when the JUMP markup is seen.
 
 * Block: |
 

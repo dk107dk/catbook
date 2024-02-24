@@ -6,19 +6,19 @@ from typing import Optional
 
 @dataclass
 class Markup:
-    """first line, first chars. a jump creates a break
+    """first line, first chars. a JUMP creates a break
     within a chapter by adding an untitled section
     separated from the preceding section by an
-    indicator. often people use three widely spaced
+    ASTERISM. often people use three widely spaced
     stars or dots as the indicator."""
 
     JUMP: str = "***"
 
-    """ first line, first char. a chapter title is a grouping
+    """ first line, first char. a CHAPTER_TITLE is a grouping
         that is below book and above section """
     CHAPTER_TITLE: str = "~"
 
-    """ first line, first char. a book title is the top
+    """ first line, first char. a BOOK_TITLE is the top
         unit. it contains chapters and sections."""
     BOOK_TITLE: str = "~~"
 
@@ -32,10 +32,10 @@ class Markup:
         into a narrative. """
     BLOCK: str = "|"
 
-    """ any line, first char. a paragraph of quoted text. this
-        markup is also useful for forcing a blank line. to do
-        that, make it the first character of an otherwise
-        blank line.  """
+    """ any line, first char. a paragraph of quoted text.
+        this markup is also useful for forcing a blank line.
+        to do that, make it the first character of an
+        otherwise blank line.  """
     QUOTED_LINE: str = '"'
 
     """ around any word or words. highlights the words
@@ -45,6 +45,10 @@ class Markup:
         a paragraph it will look like a block. in that case
         use a double highlight mark, as in: ||some words|. """
     WORD_HIGHLIGHT: str = "|"
+
+    """ the text that will be used as the asterism when
+        a JUMP is found """
+    ASTERISM: str = "*                           ⁂                           *"
 
     CONFIG: str = "markup.ini"
 
@@ -85,6 +89,10 @@ class Markup:
                 pass
             try:
                 self.WORD_HIGHLIGHT = self._config[section]["word_highlight"]
+            except KeyError:
+                pass
+            try:
+                self.ASTERISM = self._config[section]["asterism"]
             except KeyError:
                 pass
         else:

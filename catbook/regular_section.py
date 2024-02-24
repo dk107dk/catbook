@@ -36,7 +36,7 @@ class RegularSection(Section):
         line_number = 0
         for line in self._lines:
             try:
-                self._append_line(self._lines, line, line_number)
+                line_number = self._append_line(self._lines, line, line_number)
                 line_number = line_number + 1
                 # self._lines_count = self._lines_count + 1
             except Exception as e:
@@ -223,10 +223,8 @@ class RegularSection(Section):
             block = block + 1
 
     def _add_run(self, p: Paragraph, text: str) -> Run:
-        # print(f"add_run: {text} -- {self._metadata}")
         if self.metadata is not None:
             ws = self._get_words(text)
-            # print(f"ws: {ws}")
             self.metadata.WORDS = ws + self.metadata.WORDS
             n = len(ws)
             self.metadata.WORD_COUNT = self.metadata.WORD_COUNT + n
@@ -241,28 +239,42 @@ class RegularSection(Section):
         return len(self._get_words(text))
 
     def _add_jump(self, p: Paragraph) -> Run:
-        #
-        # TODO: get this text from config
-        #
-        run = p.add_run("*                   *                   *")
+        run = p.add_run(self.markup.ASTERISM)
+        run.bold = True
         return run
+
+    def _handle_comment(self, lines: List[str], line: str) -> bool:
+        if len(line) > 0 and line[0] == "#":
+            token = "INCLUDE IMAGE:"
+            insert = line.find(token)
+            if insert > 0:
+                path = line[insert + len(token) :].strip()
+                p = self.doc.add_paragraph()
+                run = p.add_run()
+                run.add_picture(path)
+                p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            return True
+        return False
 
     def _append_line(self, lines: List[str], line: str, line_number: int):
         try:
             line = line.strip()
+            if self._handle_comment(lines, line):
+                return -1 if line_number == 0 else line_number
             #
             # blank lines are paragraph breaks. we take this time
             # to write out blocks, quotes, etc.
             #
             if line == "":
                 self._append_output(lines, line, line_number)
-                return
+                return line_number
             #
             # titles
             #
             if line_number == 0:
                 self.metadata.set_first_line(self._markup, line)
-                return self._append_title(line)
+                self._append_title(line)
+                return line_number
             #
             # blocks
             #
@@ -272,13 +284,13 @@ class RegularSection(Section):
                 # italicized word started a line
                 line = line[1:]
             elif block:
-                return
+                return line_number
             #
             # quotes
             #
             quote = self._handle_quote(line, line_number, len(lines))
             if quote:
-                return
+                return line_number
             #
             # regular line
             #
@@ -290,6 +302,7 @@ class RegularSection(Section):
                 run = self._add_run(p, f"   {line}")
                 run.font.name = self._fonts.BODY
             self._last_was_break = False
+            return line_number
         except Exception as e:
-            print(f"Section failed at _append_line: error: {e}")
+            print(f"Section failed at _append_line: line: {line_number}. error: {e}")
             traceback.print_exc()
