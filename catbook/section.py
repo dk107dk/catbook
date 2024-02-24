@@ -32,6 +32,10 @@ class Section(metaclass=abc.ABCMeta):
         return self._document
 
     @property
+    def metadata(self) -> Metadata:
+        return self._metadata
+
+    @property
     def markup(self) -> Markup:
         return self._markup
 

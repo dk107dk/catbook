@@ -53,13 +53,31 @@ Each text file that is concatenated into the docx is a "section". Sections have 
 - The first line
 - All other lines
 
-The first line is presented as a title, subject to the markup described below. Every other line becomes a paragraph. Catbook skips blank lines. If the first line is blank the section will have no title to distinguish it from the section before it. On the other hand, there can be any number of comment lines before the title line.
+The first line is presented as a title, subject to the markup described below. Every other line becomes a paragraph.
+
+Catbook skips blank lines. If the first line is blank the section will have no title to distinguish it from the section before it. A sequence of blank lines is no different than a single blank line.
+
+Note that while in general blank lines are skipped and have no effect, in rare cases a blank line at the bottom of the doc will cause Word to insert a blank page. This can happens when the number of non-blank lines exactly fits the page.
 
 ### Comments
 
-Any line that begins with a # is considered a comment. Comment lines are skipped. Each comment will be checked for an include directive that includes an image. Images are centered in a paragraph. The directive is in the form:
+Any line that begins with a # is considered a comment. Comment lines are skipped. There can be any number of comment lines before the title line; the first non-comment line is considered the title line.
+
+Each comment will be checked for directives.
+
+The INCLUDE IMAGE directive includes an image. Images are centered in a paragraph. The directive is in the form:
 ```
 # INCLUDE IMAGE: path/to/my/image.png
+```
+
+The METADATA directive prints the section metadata collected to that point. The directive looks like:
+```
+# METADATA
+```
+
+The MARK directive prints a file and line number indicating what file and line the directive was positioned. This is intended to help identify where a point in the text is located in the files being concatenated. Adding a MARK to files is useful when there is a series of files without title lines. Use the directive like:
+```
+# MARK
 ```
 
 ### Markups

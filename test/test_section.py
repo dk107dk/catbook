@@ -15,6 +15,54 @@ def test_last_line():
     assert not section._last_line(["", "", "c"], 0)
 
 
+def test_page_break():
+    section = RegularSection([], None, None, None, None)
+    #
+    # opening book
+    # pg bk: chapter:False, book: True, last_was_break: False, new_section: False, paragraph_count: 0
+    c = False
+    b = True
+    lwb = False
+    s = False
+    cnt = 0
+    assert not section._needs_page_break_before(
+        chapter=c, book=b, last_was_break=lwb, new_section=s, paragraph_count=cnt
+    )
+    #
+    # section
+    # pg bk: chapter:False, book: False, last_was_break: False, new_section: True, paragraph_count: 12
+    c = False
+    b = False
+    lwb = False
+    s = True
+    cnt = 12
+    assert section._needs_page_break_before(
+        chapter=c, book=b, last_was_break=lwb, new_section=s, paragraph_count=cnt
+    )
+    #
+    # chapter
+    # pg bk: chapter:True, book: False, last_was_break: False, new_section: False, paragraph_count: 59
+    c = True
+    b = False
+    lwb = False
+    s = False
+    cnt = 12
+    assert section._needs_page_break_before(
+        chapter=c, book=b, last_was_break=lwb, new_section=s, paragraph_count=cnt
+    )
+    #
+    # next book
+    # pg bk: chapter:False, book: True, last_was_break: False, new_section: False, paragraph_count: 0
+    c = False
+    b = True
+    lwb = False
+    s = False
+    cnt = 10
+    assert section._needs_page_break_before(
+        chapter=c, book=b, last_was_break=lwb, new_section=s, paragraph_count=cnt
+    )
+
+
 def test_handle_block():
     fonts = Fonts()
     markup = Markup()

@@ -6,39 +6,42 @@ from typing import Optional
 
 @dataclass
 class Markup:
-    """first line, first chars. a JUMP creates a break
+    """First line, first chars. A JUMP creates a break
     within a chapter by adding an untitled section
     separated from the preceding section by an
-    ASTERISM. often people use three widely spaced
-    stars or dots as the indicator."""
+    ASTERISM. Often people use three widely spaced
+    stars or dots as the indicator. The JUMP markup must
+    be three characters."""
 
     JUMP: str = "***"
 
-    """ first line, first char. a CHAPTER_TITLE is a grouping
-        that is below book and above section """
+    """ First line, first char. a CHAPTER_TITLE is a grouping
+        that is below book and above section. The chapter
+        title markup must be one character. """
     CHAPTER_TITLE: str = "~"
 
-    """ first line, first char. a BOOK_TITLE is the top
-        unit. it contains chapters and sections."""
+    """ First line, first char. A BOOK_TITLE is the top
+        unit. From a TOC perspective, it contains chapters and
+        sections. The book title markup must be two characters. """
     BOOK_TITLE: str = "~~"
 
-    """ first line, first char. forces the section to start
+    """ First line, first char. Forces the section to start
         on a new page """
     NEW_SECTION: str = ">"
 
-    """ any line, first char. text that is set off from
+    """ Any line, first char. Text that is set off from
         the rest of the quoted and unquoted paragraphs.
         could be used for inserting the text of a document
         into a narrative. """
     BLOCK: str = "|"
 
-    """ any line, first char. a paragraph of quoted text.
-        this markup is also useful for forcing a blank line.
+    """ Any line, first char. a paragraph of quoted text.
+        This markup is also useful for forcing a blank line.
         to do that, make it the first character of an
         otherwise blank line.  """
     QUOTED_LINE: str = '"'
 
-    """ around any word or words. highlights the words
+    """ Around any word or words. highlights the words
         between two of the marks in a paragraph. for e.g., in
         italics. Assuming | is used for both highlights and
         blocks, if a highlight begins with the first word of
@@ -46,7 +49,7 @@ class Markup:
         use a double highlight mark, as in: ||some words|. """
     WORD_HIGHLIGHT: str = "|"
 
-    """ the text that will be used as the asterism when
+    """ The text that will be used as the asterism when
         a JUMP is found """
     ASTERISM: str = "*                           ⁂                           *"
 

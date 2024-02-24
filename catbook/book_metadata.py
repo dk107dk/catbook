@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict, cast
 from . import SectionMetadata
 from . import Files
 from . import Metadata
@@ -14,6 +14,9 @@ class BookMetadata(Metadata):
 
     def __post_init__(self):
         self.seek_metadata()
+
+    def sections_count(self) -> int:
+        return len(self.SECTIONS)
 
     def seek_metadata(self) -> None:
         if self.FILES is None or self.FILES.INPUT is None:
@@ -50,8 +53,23 @@ class BookMetadata(Metadata):
 
     def new_section(self):
         section = SectionMetadata()
+        section.BOOK_METADATA = self
         self.SECTIONS.append(section)
         return section
+
+    def last_section(self, section: Metadata) -> Optional[Metadata]:
+        index = self.SECTIONS.index(cast(SectionMetadata, section))
+        if index == 0:
+            return None
+        else:
+            return self.SECTIONS[index - 1]
+
+    def next_section(self, section: Metadata) -> Optional[Metadata]:
+        index = self.SECTIONS.index(cast(SectionMetadata, section))
+        if index >= len(self.SECTIONS) - 1:
+            return None
+        else:
+            return self.SECTIONS[index - 1]
 
     @property
     def word_count(self) -> int:
@@ -72,3 +90,9 @@ class BookMetadata(Metadata):
                 else:
                     words[word] = 1
         return words
+
+    def paragraphs_count(self) -> int:
+        count = 0
+        for s in self.SECTIONS:
+            count += s.PARAGRAPH_COUNT
+        return count
