@@ -108,7 +108,7 @@ class RegularSection(Section):
             self._append_quote()
         if self._part_break and self._last_line(lines, line_number):
             #
-            # we never get here?!
+            # TODO: we no longer get here.
             #
             """
             p = self._add_paragraph()
