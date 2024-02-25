@@ -183,25 +183,22 @@ class RegularSection(Section):
         if self._is_chapter(line):
             self.metadata.CHAPTER = True
             line = line[1:]
-            self._add_page_break_if()
-            p = self.doc.add_heading("", 2)
-            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            run = self._add_run(p, line)
-            run.font.name = self._fonts.BODY
-            run.font.color.rgb = RGBColor.from_string("000000")
-            self.metadata.PARAGRAPH_COUNT = self.metadata.PARAGRAPH_COUNT + 1
+            self._add_upper_heading(line, 1)
 
     def _handle_book_if(self, line) -> None:
         if self._is_book(line):
             self.metadata.BOOK = True
             line = line[2:]
-            self._add_page_break_if()
-            p = self.doc.add_heading("", 1)
-            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            run = self._add_run(p, line)
-            run.font.name = self._fonts.BODY
-            run.font.color.rgb = RGBColor.from_string("000000")
-            self.metadata.PARAGRAPH_COUNT = self.metadata.PARAGRAPH_COUNT + 1
+            self._add_upper_heading(line, 1)
+
+    def _add_upper_heading(self, line: str, level: int) -> None:
+        self._add_page_break_if()
+        p = self.doc.add_heading("", level)
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        run = self._add_run(p, line)
+        run.font.name = self._fonts.BODY
+        run.font.color.rgb = RGBColor.from_string("000000")
+        self.metadata.PARAGRAPH_COUNT = self.metadata.PARAGRAPH_COUNT + 1
 
     def _handle_section_if(self, line) -> None:
         if self._is_section(line):
@@ -325,7 +322,7 @@ class RegularSection(Section):
             return p
         return False
 
-    def _handle_comment(self, lines: List[str], line: str) -> bool:
+    def _handle_comment_if(self, lines: List[str], line: str) -> bool:
         if len(line) > 0 and line[0] == "#":
             self._include_image_if(lines, line)
             self._include_mark_if(lines, line)
@@ -388,7 +385,7 @@ class RegularSection(Section):
             # comments are lines starting with #. they do not
             # count for the purposes of finding the title line.
             #
-            if self._handle_comment(lines, line):
+            if self._handle_comment_if(lines, line):
                 return line_number - 1
             #
             # titles
