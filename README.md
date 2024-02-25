@@ -1,8 +1,8 @@
 # catbook
 
-Catbook is very simple docx file builder. It was created to make managing book chapters simple. Think of Catbook as a poor writer's <a href='https://www.literatureandlatte.com/scrivener'>Scrivener</a>
+Catbook is very simple docx file builder. It was created to make managing book chapters simple. Think of Catbook as a poor writer's <a href='https://www.literatureandlatte.com/scrivener'>Scrivener</a>.
 
-The goal was a minimal-markup way to concatenate text files into Word docs that could be converted to epub, mobi, pdf, etc.
+The goal was to create a minimal-markup way to concatenate text files into Word docs that could then be converted to epub, mobi, pdf, etc. using a tool like <a href='https://pandoc.org/'>Pandoc</a>.
 
 Catbook:
 * Allows chapters to be quickly rearranged
@@ -10,6 +10,7 @@ Catbook:
 * Offers a trivially easy way to differentiate quotes, blocks, and special words
 * Supports three levels of hierarchy
 * Includes only the absolute minimum of markup and functionality
+* Looks good enough for most purposes (e.g. sharing files with editors, previewing as an ebook, etc.)
 * Makes it easy to get started and equally easy to move your content to another tool
 
 Catbook is <a href='https://pypi.org/project/catbook/'>available on Pypi</a>.
