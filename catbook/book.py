@@ -57,45 +57,23 @@ class Book:
                 self._check_for_inserts(row)
                 self._check_for_metadata(row)
             else:
-                try:
-                    # build the book here
-                    self._append_section(row)
-                    self._file_count = self._file_count + 1
-                except Exception as e:
-                    print(f"Error: {cnt}: {row}: {e}")
-                    print(traceback.format_exc())
+                # build the book here
+                self._append_section(row)
+                self._file_count = self._file_count + 1
             cnt = cnt + 1
         return cnt
 
     def _get_rows(self) -> List[str]:
         try:
-            if self._files.INPUT.endswith(".csv"):
-                return self._get_rows_csv()
-            elif self._files.INPUT.endswith(".txt") or self._files.INPUT.endswith(
-                ".bookfile"
-            ):
-                return self._get_rows_txt()
-            else:
+            if not self._files.INPUT.endswith(".bookfile"):
                 raise UnknownBookfileTypeException(
                     f"Unknown bookfile type. Please check {self._files.INPUT}"
                 )
+            return self._get_rows_txt()
         except FileNotFoundError:
             raise BookfileNotFoundException(
                 f"Bookfile not found. Please check {self._files.INPUT}"
             )
-
-    def _get_rows_csv(self) -> List[str]:
-        rows = []
-        with open(self._files.INPUT) as csv_file:
-            csv_reader = csv.reader(csv_file, delimiter=",")
-            for row in csv_reader:
-                if len(row) == 0:
-                    pass
-                elif len(row[0]) > 0 and row[0][0] == "#":
-                    rows.append(row[0])
-                else:
-                    rows.append(f"{row[0]}/{row[1]}")
-        return rows
 
     def _get_rows_txt(self) -> List[str]:
         rows = []

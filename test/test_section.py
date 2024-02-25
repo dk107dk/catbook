@@ -151,7 +151,7 @@ def test_for_spaces_txt():
     builder.init()
     builder.files.OUTPUT = "./test.docx"
     builder.files.INPUT = "test/config/coda.bookfile"
-    builder.files.FILES = "test/config/texts/test"
+    builder.files.FILES = "test/config/texts"
     builder.build()
 
     words = builder.book.metadata.words()

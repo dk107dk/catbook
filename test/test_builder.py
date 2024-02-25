@@ -20,7 +20,7 @@ def test_output():
     builder.init()
     print("test_output: resetting output and input!")
     builder.files.OUTPUT = output
-    builder.files.INPUT = "test/config/empty-contents.csv"
+    builder.files.INPUT = "test/config/coda.bookfile"
     builder.files.FILES = "test/config/texts"
     print(f"test_output: files are now {builder.files}")
     builder.build()

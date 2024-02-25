@@ -220,9 +220,10 @@ class RegularSection(Section):
             self.metadata.PARAGRAPH_COUNT = self.metadata.PARAGRAPH_COUNT + 1
 
     def _is_new_section(self, line: str) -> bool:
-        return (
-            len(line) >= 1 and line[0:1] == self._markup.NEW_SECTION
-        ) or self.metadata.last_section().is_book_or_chapter()  # type: ignore
+        return (len(line) >= 1 and line[0:1] == self._markup.NEW_SECTION) or (
+            self.metadata.last_section() is not None
+            and cast(SectionMetadata, self.metadata.last_section()).is_book_or_chapter()
+        )  # type: ignore
 
     def _is_chapter(self, line: str) -> bool:
         if len(line) == 0:

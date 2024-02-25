@@ -52,7 +52,7 @@ class BookMetadata(Metadata):
         return count
 
     def new_section(self):
-        section = SectionMetadata()
+        section = SectionMetadata(self)
         section.BOOK_METADATA = self
         self.SECTIONS.append(section)
         return section
