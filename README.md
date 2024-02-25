@@ -1,28 +1,37 @@
 # catbook
 
-A very simple docx file builder. Catbook was created to make managing book chapters simple. The goal was a minimal-markup way to concatenate text files into Word docs that could be converted to epub, mobi, pdf, etc.
+Catbook is very simple docx file builder. It was created to make managing book chapters simple. Think of Catbook as a poor writer's <a href='https://www.literatureandlatte.com/scrivener'>Scrivener</a>
 
-The tool needed to:
-* Allow chapters to be quickly rearranged
-* Allow multi-section chapters
-* Offer a trivially easy way to differentiate quotes, blocks, and special words
-* Support three levels of hierarchy
-* Include only the absolute minimum of markup and functionality
+The goal was a minimal-markup way to concatenate text files into Word docs that could be converted to epub, mobi, pdf, etc.
 
+Catbook:
+* Allows chapters to be quickly rearranged
+* Allows multi-section chapters
+* Offers a trivially easy way to differentiate quotes, blocks, and special words
+* Supports three levels of hierarchy
+* Includes only the absolute minimum of markup and functionality
+* Makes it easy to get started and equally easy to move your content to another tool
+
+Catbook is <a href='https://pypi.org/project/catbook/'>available on Pypi</a>.
 ___
 
 ## Bookfiles
 
-Catbook reads a flat list of text files from a .bookfile and concatenates them into a Word doc. The doc may have up to three levels. The levels are titled using Word styles.
+Catbook reads a flat list of text files from a .bookfile and concatenates them into a Word doc. Files are identified by relative paths below a root folder.
 
-Metadata about the files that are concatenated into the docx is available from the Book object and each section.
+The output doc may have up to three levels. The text files being concatenated indicate their level using the markup discussed below. Level titles use first, second, and third level built-in Word header styles. Using headers supports Word's navigation pane and TOC building features.
 
-Bookfiles can include several things besides paths to text files.
+Metadata is collected during the compile. It is available from the Book object and from each Section object.
 
-* Comments as lines starting with #
-* TITLE and AUTHOR to be shown in the book's metadata
-* INCLUDE of preexisting docx
-* A METADATA directive that inserts a page with a table containing the author, title, bookfile path, word count and other metadata.
+Bookfiles include:
+* Paths to text files
+* Comments with optional directives
+
+The directives are:
+* TITLE to be shown in the book's metadata
+* AUTHOR to be shown in the book's metadata
+* One or more INSERT directives to include preexisting docx
+* A METADATA directive that inserts a page with a table containing the author, title, bookfile path, word count and other metadata. The metadata will only be complete at the end of the compile, so the typical place for this directive is at the end of the bookfile.
 
 For e.g.
 ```
@@ -53,11 +62,11 @@ Each text file that is concatenated into the docx is a "section". Sections have 
 - The first line
 - All other lines
 
-The first line is presented as a title, subject to the markup described below. Every other line becomes a paragraph.
+The first line is presented as a title. Titles are configured using the markup described below. Every other line becomes a paragraph.
 
 Catbook skips blank lines. If the first line is blank the section will have no title to distinguish it from the section before it. A sequence of blank lines is no different than a single blank line.
 
-Note that while in general blank lines are skipped and have no effect, in rare cases a blank line at the bottom of the doc will cause Word to insert a blank page. This can happens when the number of non-blank lines exactly fits the page.
+Note that while in general, blank lines are skipped and have no effect, in rare cases a blank line at the bottom of the doc may cause Word to insert a trailing blank page. This can happens when the number of non-blank lines exactly fits the page. As it is not a consistent behavior, and depends on the Word render engine, trailing blank lines should be avoided.
 
 ### Comments
 
@@ -70,12 +79,12 @@ The INCLUDE IMAGE directive includes an image. Images are centered in a paragrap
 # INCLUDE IMAGE: path/to/my/image.png
 ```
 
-The METADATA directive prints the section metadata collected to that point. The directive looks like:
+The METADATA directive prints the section metadata collected to that point. The information Catbook inserts is clearly visible in gray text. The directive looks like:
 ```
 # METADATA
 ```
 
-The MARK directive prints a file and line number indicating what file and line the directive was positioned. This is intended to help identify where a point in the text is located in the files being concatenated. Adding a MARK to files is useful when there is a series of files without title lines. Use the directive like:
+The MARK directive prints a file and line number. Marks are intended for debugging the bookfile and its text files. Adding a MARK to files is useful when the bookfile has a series of files without title lines. Use the directive like:
 ```
 # MARK
 ```
@@ -109,15 +118,11 @@ In 1918 the empire slept...
 
 * Jump: \***
 
-A jump is on the first line of a text file. Jumps creates a break within a chapter by adding an untitled section. The section is separated from the preceding section by an indicator called an asterism. Most commonly the asterism is three widely spaced stars. The asterism text is set as the ASTERISM.
+A jump is on the first line of a text file. It takes the place of a title. Jumps create a break within a chapter by adding an untitled section. The section is separated from the preceding section by an indicator called an asterism. Most commonly the asterism is three widely spaced stars. The asterism text is configurable.
 ```
 ***
 In this section I will show that...
 ```
-
-* Asterism: \*                           ⁂                           \*
-
-The asterism is a section separator that is inserted when the JUMP markup is seen.
 
 * Block: |
 
