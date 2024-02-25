@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "catbook"
-version = "0.1.1.0"
+version = "0.1.1.2"
 description = ""
 authors = ["David Kershaw <dk107dk@hotmail.com>"]
 readme = "README.md"

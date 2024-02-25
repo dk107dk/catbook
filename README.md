@@ -176,5 +176,5 @@ if __name__ == "__main__":
 
 The output looks like this:
 
-<img width="75%" height="75%" src="https://github.com/dk107dk/catbook/blob/main/output.png"/>
+<img width="75%" height="75%" src="https://github.com/dk107dk/catbook/raw/main/output.png"/>
 
