@@ -186,3 +186,13 @@ The output looks like this:
 
 <img width="75%" height="75%" src="https://github.com/dk107dk/catbook/raw/main/output.png"/>
 
+___
+
+## Cdocs
+
+Catbook supports <a href='https://pypi.org/project/cdocs/'>Cdocs</a> as a files source. Cdocs assembles and transforms content identified by abstract paths. The main value to Catbook users would be in using token substitution.
+
+See: ```cdocs_main.py```
+
+
+
