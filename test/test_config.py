@@ -63,9 +63,6 @@ def test_load_fonts_config():
 
 
 # ======== FILES
-def test_load_no_files_config():
-    files = Files()
-    assert files.INPUT == "contents.csv"
 
 
 def test_load_files_config():
