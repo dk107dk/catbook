@@ -3,6 +3,8 @@ from typing import List, Optional, Dict, cast
 from . import SectionMetadata
 from . import Files
 from . import Metadata
+from cdocs.cdocs import Cdocs
+import logging
 
 
 @dataclass
@@ -14,6 +16,13 @@ class BookMetadata(Metadata):
 
     def __post_init__(self):
         self.seek_metadata()
+        self._disable_inline_marks_and_metadata = False
+
+    def are_inline_marks_and_metadata_disabled(self) -> bool:
+        return self._disable_inline_marks_and_metadata
+
+    def disable_inline_marks_and_metadata(self, disable: bool) -> None:
+        self._disable_inline_marks_and_metadata = disable
 
     def sections_count(self) -> int:
         return len(self.SECTIONS)
@@ -30,13 +39,32 @@ class BookMetadata(Metadata):
             if author is not None:
                 self.AUTHOR = author
 
+    @property
+    def cdocs(self) -> Cdocs:
+        root = self.FILES.FILES[6:]
+        cdocs = Cdocs(root)
+        return cdocs
+
     def _seek(self, token: str) -> Optional[str]:
         if token not in ["TITLE", "AUTHOR"]:
             raise Exception("token must be either title or author")
-        with open(self.FILES.INPUT) as file:
-            for line in file:
+
+        cd = self.FILES.INPUT[0:6]
+        if cd == "cdocs:":
+            docpath = self.FILES.INPUT[6:] if cd == "cdocs:" else self.FILES.INPUT
+            doc = self.cdocs.get_doc(docpath)
+            logging.info(f"book_metadata._seek: found cdocs doc: {doc}")
+            if doc is None:
+                return None
+            rows = doc.split("\n")
+            for line in rows:
                 if line[0] == "#" and line.find(token) > 0:
                     return line[(line.find(token) + len(token) + 1) :].strip()
+        else:
+            with open(self.FILES.INPUT) as file:
+                for line in file:
+                    if line[0] == "#" and line.find(token) > 0:
+                        return line[(line.find(token) + len(token) + 1) :].strip()
         return None
 
     @property

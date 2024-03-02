@@ -36,11 +36,17 @@ class Builder:
         self._new_document()
         self._book: Optional[Book] = None
 
+    def disable_inline_marks_and_metadata(self, disable: bool) -> bool:
+        if self.book and self.book.metadata:
+            self.book.metadata.disable_inline_marks_and_metadata(disable)
+            return True
+        return False
+
     @property
     def book(self) -> Optional[Book]:
         if self._book is None:
             self.init()
-            self.book = Book(
+            self._book = Book(
                 files=self._files,  # type: ignore [arg-type]
                 markup=self._markup,
                 fonts=self._fonts,
@@ -116,7 +122,7 @@ class Builder:
             print(f"No input file configured in {self._files.INPUT}")
             return False
 
-        if not exists(self._files.INPUT):  # type: ignore[union-attr]
+        if self._files.INPUT[0:6] != "cdocs:" and not exists(self._files.INPUT):  # type: ignore[union-attr]
             print(f"No input file configured in {self._files}")  # type: ignore[union-attr]
             return False
 
@@ -124,7 +130,7 @@ class Builder:
             print(f"No files directory configured in {self._files}")
             return False
 
-        if not exists(self._files.FILES):  # type: ignore[union-attr]
+        if self._files.INPUT[0:6] != "cdocs:" and not exists(self._files.FILES):  # type: ignore[union-attr]
             print(f"Files directory does not exist at {self._files.FILES}")  # type: ignore[union-attr]
             return False
 
