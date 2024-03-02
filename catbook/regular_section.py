@@ -1,6 +1,7 @@
 from . import Markup
 from . import Fonts
 from . import SectionMetadata
+from . import BookMetadata
 from . import Metadata
 from . import Section
 from docx import Document
@@ -331,6 +332,11 @@ class RegularSection(Section):
         return False
 
     def _include_mark_if(self, lines: List[str], line: str) -> bool:
+        if cast(
+            BookMetadata, self.metadata.BOOK_METADATA
+        ).are_inline_marks_and_metadata_disabled():
+            return False
+
         token = "MARK"
         mark = line.find(token)
         if mark > 0:
@@ -347,6 +353,11 @@ class RegularSection(Section):
         return False
 
     def _dump_metadata_if(self, lines: List[str], line: str) -> bool:
+        if cast(
+            BookMetadata, self.metadata.BOOK_METADATA
+        ).are_inline_marks_and_metadata_disabled():
+            return False
+
         token = "METADATA"
         mark = line.find(token)
         if mark > 0:

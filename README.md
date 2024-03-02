@@ -90,6 +90,8 @@ The MARK directive prints a file and line number. Marks are intended for debuggi
 # MARK
 ```
 
+MARKs and METADATAs can be disabled globally using the disable_inline_marks_and_metadata method on Builder.
+
 ### Markups
 
 There are a very small number of markups to do things like italicize quotes, force a page break between sections, etc. Markup chars and fonts are minimally customizable using .ini files. See catbook/markup.py and catbook/fonts.py.
