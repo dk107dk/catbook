@@ -1,5 +1,7 @@
 >A future
 
+My name is {{name}}
+
 What heights? A great family. Its next generation. Everything in motion. Little explained. No certainties.
 
 Such is life. Zoom out enough. It rhymes, echos, and repeats. Zoom out further. Atomically precise time. At the right magnification. So far from the material.

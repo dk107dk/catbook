@@ -190,7 +190,15 @@ ___
 
 ## Cdocs
 
-Catbook supports <a href='https://pypi.org/project/cdocs/'>Cdocs</a> as a files source. Cdocs assembles and transforms content identified by abstract paths. The main value to Catbook users would be in using token substitution.
+Catbook supports <a href='https://pypi.org/project/cdocs/'>Cdocs</a> as a files source. Cdocs assembles and transforms content identified by abstract paths.
+
+The main value to Catbook users would most likely be in token substitution. This capability might be helpful if, say, you wanted to include a character's name in one or more files but were concerned that it might change. In that case, you could define a variable in a tokens.json file called ```name``` and reference it as:
+
+```
+Who am I? My name is {{name}}!
+```
+
+The tokens.json file would live beside the file it is used in or in a folder above that within the cdocs root. Every file beside that tokens.json file or in lower folders would be able to use the same ```name``` variable.
 
 See: ```cdocs_main.py```
 
