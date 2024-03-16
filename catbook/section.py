@@ -5,6 +5,9 @@ from . import SectionMetadata
 from . import BookMetadata
 from . import Metadata
 from docx import Document
+from docx.text.paragraph import Paragraph
+from docx.enum.text import WD_BREAK
+
 from typing import List, Optional, Union, Any
 
 
@@ -23,9 +26,10 @@ class Section(metaclass=abc.ABCMeta):
         self._document: Document = document
         self._block: Optional[List[Optional[str]]] = None
         self._quote: Optional[List[Optional[str]]] = None
+        self._metadata = metadata
+        # these two not used?
         self._part_break: bool = False
         self._last_was_break = False
-        self._metadata = metadata
 
     @property
     def doc(self) -> Document:
@@ -42,3 +46,10 @@ class Section(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def compile(self) -> bool:
         pass
+
+    @classmethod
+    def add_page_break(cls, doc: Document) -> Paragraph:
+        p = doc.add_paragraph()
+        run = p.add_run("")
+        run.add_break(WD_BREAK.PAGE)
+        return p
