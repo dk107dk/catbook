@@ -32,22 +32,30 @@ The directives are:
 * TITLE to be shown in the book's metadata
 * AUTHOR to be shown in the book's metadata
 * One or more INSERT directives to include preexisting docx
+* PAGEBREAK to put a page break between the sections before and after the comment line
 * A METADATA directive that inserts a page with a table containing the author, title, bookfile path, word count and other metadata. The metadata will only be complete at the end of the compile, so the typical place for this directive is at the end of the bookfile.
 
 For e.g.
 ```
 #
-# this is a complete bookfile
+# this is a complete bookfile with title and author metadata:
 # TITLE: This is my book
 # AUTHOR: John Doe
 #
-# INSERT: an-existing/file.docx
+# Let's insert a preexisting title page Word doc:
+# INSERT: an-existing/title-page.docx
+# PAGEBREAK
 #
 filesdir/section-1.txt
 morefiles/section-2.txt
-# INSERT: another/file.docx
-still/morefiles/section-2.txt
 #
+# let's insert another file here:
+# INSERT: another/file.docx
+#
+still/morefiles/section-3.txt
+filesdir/last-section-4.txt
+#
+# Let's drop the book build's metadata at the end:
 # METADATA
 #
 ```
@@ -73,7 +81,10 @@ Note that while in general, blank lines are skipped and have no effect, in rare 
 
 Any line that begins with a # is considered a comment. Comment lines are skipped. There can be any number of comment lines before the title line; the first non-comment line is considered the title line.
 
-Each comment will be checked for directives.
+Each comment will be checked for the following directives:
+* INCLUDE IMAGE
+* METADATA
+* MARK
 
 The INCLUDE IMAGE directive includes an image. Images are centered in a paragraph. The directive is in the form:
 ```
