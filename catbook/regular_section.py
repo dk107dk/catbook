@@ -181,7 +181,7 @@ class RegularSection(Section):
         if self._is_chapter(line):
             self.metadata.CHAPTER = True
             line = line[1:]
-            self._add_upper_heading(line, 1)
+            self._add_upper_heading(line, 2)
 
     def _handle_book_if(self, line) -> None:
         if self._is_book(line):
