@@ -9,6 +9,7 @@ from docx.text.run import Run
 from docx.shared import Pt
 from docx.shared import RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK
+from docx.shared import Inches
 import traceback
 from typing import List, Optional
 from . import Tokenizer
@@ -35,12 +36,9 @@ class MetadataSection(Section):
 
     def compile(self) -> bool:
         """returns True if the lines were all added to the document"""
-        p = self.doc.add_paragraph()
-        run = self._add_run(p, "")
-        run.font.name = self._fonts.BODY
-        run.add_break(WD_BREAK.PAGE)
+        p = self.add_page_break(self.doc)
 
-        run = self._add_run(p, "Book metadata", 12, True)
+        self._add_run(p, "Book metadata", 12, True)
 
         table = self.doc.add_table(rows=1, cols=2)
         table.style.name = "Table Grid"
@@ -94,9 +92,9 @@ class MetadataSection(Section):
         self._add_run(p, f"{self.metadata.unique_words_count()}", 10, False)
 
         p = self.doc.add_paragraph()
-        run = self._add_run(p, "")
+        self._add_run(p, "")
         p = self.doc.add_paragraph()
-        run = self._add_run(p, "Compiled by catbook", 8, False, True)
+        self._add_run(p, "Compiled by catbook", 8, False, True)
 
         return True
 

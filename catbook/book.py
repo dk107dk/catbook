@@ -61,6 +61,7 @@ class Book:
             if len(row) > 0 and row[0] == "#":
                 self._check_for_inserts(row)
                 self._check_for_metadata(row)
+                self._check_for_page_break(row)
                 cnt = cnt + 1
             elif len(row) > 0:
                 logging.info(f"book.create appending {row}")
@@ -170,6 +171,12 @@ class Book:
             composer = Composer(self._document)
             doc2 = Document(path)
             composer.append(doc2)
+
+    def _check_for_page_break(self, line: str) -> None:
+        token = "PAGEBREAK"
+        insert = line.find(token)
+        if insert > 0:
+            Section.add_page_break(self._document)
 
     def _check_for_metadata(self, line: str) -> None:
         token = "METADATA"

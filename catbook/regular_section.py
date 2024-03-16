@@ -158,10 +158,7 @@ class RegularSection(Section):
         if self._needs_page_break_before(
             chapter=c, book=b, last_was_break=lwb, new_section=s, paragraph_count=cnt
         ):
-            p = self._add_paragraph()
-            run = self._add_run(p, "")
-            run.font.name = self._fonts.TITLE
-            run.add_break(WD_BREAK.PAGE)
+            p = self.add_page_break(self.doc)
             self.metadata.STAND_ALONE = True
             return p
 
